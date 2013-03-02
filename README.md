@@ -18,7 +18,8 @@ The demo is made up of two real applications and a bunch of associated unit test
 **PancakeProwler.Web** - an ASP.net MVC web application which serves as the center of our project
 **PancakeProwler.RecipeAssembler** - a worker process which builds a recipe book in PDF form and e-mails it to the user. In theory this process takes a long time so it is done asynchronously out of process
 
-Potential projects
+_Potential projects_
+
 **PancakeProwler.Notifier** - a worker process which runs using a schedule to send out notifications to users
 **PancakeProwler.TwitterWatcher** - a worker process which listens to twitter and replies with information on close by breakfasts
 
