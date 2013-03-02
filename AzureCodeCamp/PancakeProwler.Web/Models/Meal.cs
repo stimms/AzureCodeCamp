@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AzureCodeCamp.Models
+namespace PancakeProwler.Web.Models
 {
     public class Meal
     {
@@ -15,5 +15,6 @@ namespace AzureCodeCamp.Models
         public virtual ContactInformaiton ContactInformation { get; set; }
 
         public string Address { get; set; }
+        public DateTime Date { get; set; }
     }
 }

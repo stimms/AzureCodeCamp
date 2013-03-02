@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace AzureCodeCamp.Models
+namespace PancakeProwler.Web.Models
 {
     public class ContactInformaiton
     {

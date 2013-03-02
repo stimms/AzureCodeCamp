@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCodeCamp", "AzureCodeCamp\AzureCodeCamp.csproj", "{8C705560-5081-4801-8393-91056602998E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Web", "PancakeProwler.Web\PancakeProwler.Web.csproj", "{8C705560-5081-4801-8393-91056602998E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Web.Tests", "PancakeProwler.Web.Tests\PancakeProwler.Web.Tests.csproj", "{758B47F1-970A-4671-8FB5-463EEDD348B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{8C705560-5081-4801-8393-91056602998E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C705560-5081-4801-8393-91056602998E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C705560-5081-4801-8393-91056602998E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758B47F1-970A-4671-8FB5-463EEDD348B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758B47F1-970A-4671-8FB5-463EEDD348B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758B47F1-970A-4671-8FB5-463EEDD348B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758B47F1-970A-4671-8FB5-463EEDD348B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
