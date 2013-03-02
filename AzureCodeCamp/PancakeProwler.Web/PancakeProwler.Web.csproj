@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Models\ContactInformaiton.cs" />
     <Compile Include="Models\Meal.cs" />
+    <Compile Include="Models\PancakeProwlerUser.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
