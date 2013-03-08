@@ -18,5 +18,9 @@ namespace PancakeProwler.Web.Models
         }
 
         public DbSet<ContactInformaiton> ContactInformaitons { get; set; }
+
+        public DbSet<Recipe> Recipes { get; set; }
+
+        public DbSet<Meal> Meals { get; set; }
     }
 }
