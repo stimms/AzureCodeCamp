@@ -131,7 +131,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ContactInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MealController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
@@ -140,13 +139,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContactInformaiton.cs" />
-    <Compile Include="Models\DataContext.cs" />
-    <Compile Include="Models\Meal.cs" />
-    <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\PancakeProwlerUser.cs" />
-    <Compile Include="Models\Recipe.cs" />
-    <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,21 +198,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ContactInformation\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ContactInformation\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ContactInformation\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ContactInformation\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ContactInformation\Delete.cshtml" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -258,6 +235,20 @@
   </Target> -->
   <ItemGroup>
     <TypeScriptCompile Include="$(ProjectDir)\**\*.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PancakeProwler.Data.Common\PancakeProwler.Data.Common.csproj">
+      <Project>{69b6aad3-9f25-4af4-bc11-f35042a6c648}</Project>
+      <Name>PancakeProwler.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Data.SQL\PancakeProwler.Data.SQL.csproj">
+      <Project>{bd158b9e-9c16-46f3-8709-ce7a69f24da2}</Project>
+      <Name>PancakeProwler.Data.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Data.Table\PancakeProwler.Data.Table.csproj">
+      <Project>{4c58230f-c5af-4d81-a244-3567e40dd4b5}</Project>
+      <Name>PancakeProwler.Data.Table</Name>
+    </ProjectReference>
   </ItemGroup>
   <Target Name="TypeScriptCompile" BeforeTargets="Build">
     <Message Text="Compiling TypeScript files" />

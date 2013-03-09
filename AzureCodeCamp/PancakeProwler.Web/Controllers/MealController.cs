@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PancakeProwler.Web.Models;
+using System.Collections.Generic;
+using PancakeProwler.Data.Common.Models;
+using PancakeProwler.Data.Common.Repositories;
 
 namespace PancakeProwler.Web.Controllers
 {
     public class MealController : Controller
     {
-        private DataContext db = new DataContext();
+        public IMealRepository MealRepository { get; set; }
 
         //
         // GET: /Meal/
 
         public ActionResult Index()
         {
-            return View(db.Meals.ToList());
+            return View(MealRepository.List());
         }
 
         //
@@ -26,7 +25,7 @@ namespace PancakeProwler.Web.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Meal meal = db.Meals.Find(id);
+            Meal meal = MealRepository.GetById(id);
             if (meal == null)
             {
                 return HttpNotFound();
@@ -50,8 +49,7 @@ namespace PancakeProwler.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Meals.Add(meal);
-                db.SaveChanges();
+                MealRepository.Create(meal);
                 return RedirectToAction("Index");
             }
 
@@ -63,7 +61,7 @@ namespace PancakeProwler.Web.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Meal meal = db.Meals.Find(id);
+            Meal meal = MealRepository.GetById(id);
             if (meal == null)
             {
                 return HttpNotFound();
@@ -79,41 +77,16 @@ namespace PancakeProwler.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(meal).State = EntityState.Modified;
-                db.SaveChanges();
+                MealRepository.Edit(meal);
                 return RedirectToAction("Index");
             }
             return View(meal);
         }
 
-        //
-        // GET: /Meal/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            Meal meal = db.Meals.Find(id);
-            if (meal == null)
-            {
-                return HttpNotFound();
-            }
-            return View(meal);
-        }
-
-        //
-        // POST: /Meal/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Meal meal = db.Meals.Find(id);
-            db.Meals.Remove(meal);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            MealRepository.Dispose();
             base.Dispose(disposing);
         }
     }

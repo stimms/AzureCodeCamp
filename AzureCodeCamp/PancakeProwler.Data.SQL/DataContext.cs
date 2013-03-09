@@ -1,6 +1,7 @@
-﻿using System.Data.Entity;
+﻿using PancakeProwler.Data.Common.Models;
+using System.Data.Entity;
 
-namespace PancakeProwler.Web.Models
+namespace PancakeProwler.Data.SQL
 {
     public class DataContext : DbContext
     {
@@ -16,8 +17,6 @@ namespace PancakeProwler.Web.Models
         public DataContext() : base("name=DataContext")
         {
         }
-
-        public DbSet<ContactInformaiton> ContactInformaitons { get; set; }
 
         public DbSet<Recipe> Recipes { get; set; }
 

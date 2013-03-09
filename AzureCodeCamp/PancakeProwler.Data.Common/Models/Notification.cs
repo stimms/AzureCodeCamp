@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace PancakeProwler.Web.Models
+namespace PancakeProwler.Data.Common.Models
 {
     public class Notification
     {

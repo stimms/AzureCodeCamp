@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PancakeProwler.Web.Models
+namespace PancakeProwler.Data.Common.Models
 {
     public class Recipe
     {

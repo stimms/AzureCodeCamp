@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PancakeProwler.Web.Models;
+using System.Collections.Generic;
+using PancakeProwler.Data.Common.Models;
+using PancakeProwler.Data.Common.Repositories;
 
 namespace PancakeProwler.Web.Controllers
 {
     public class RecipeController : Controller
     {
-        private DataContext db = new DataContext();
 
+        public IRecipeRepository RecipeRepository { get; set; }
         //
         // GET: /Recipe/
 
         public ActionResult Index()
         {
-            return View(db.Recipes.ToList());
+            return View(RecipeRepository.List());
         }
 
         //
@@ -26,7 +25,7 @@ namespace PancakeProwler.Web.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Recipe recipe = db.Recipes.Find(id);
+            Recipe recipe = RecipeRepository.GetById(id);
             if (recipe == null)
             {
                 return HttpNotFound();
@@ -50,8 +49,7 @@ namespace PancakeProwler.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Recipes.Add(recipe);
-                db.SaveChanges();
+                RecipeRepository.Create(recipe); 
                 return RedirectToAction("Index");
             }
 
@@ -63,7 +61,7 @@ namespace PancakeProwler.Web.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Recipe recipe = db.Recipes.Find(id);
+            Recipe recipe = RecipeRepository.GetById(id);
             if (recipe == null)
             {
                 return HttpNotFound();
@@ -79,41 +77,15 @@ namespace PancakeProwler.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(recipe).State = EntityState.Modified;
-                db.SaveChanges();
+                RecipeRepository.Edit(recipe);
                 return RedirectToAction("Index");
             }
             return View(recipe);
         }
 
-        //
-        // GET: /Recipe/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            Recipe recipe = db.Recipes.Find(id);
-            if (recipe == null)
-            {
-                return HttpNotFound();
-            }
-            return View(recipe);
-        }
-
-        //
-        // POST: /Recipe/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Recipe recipe = db.Recipes.Find(id);
-            db.Recipes.Remove(recipe);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            RecipeRepository.Dispose(); 
             base.Dispose(disposing);
         }
     }
