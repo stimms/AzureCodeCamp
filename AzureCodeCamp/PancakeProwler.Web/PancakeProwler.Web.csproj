@@ -122,6 +122,7 @@
     <Compile Include="Controllers\ContactInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MealController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\UpcomingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,6 +150,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\Notification\Create.cshtml" />
     <TypeScriptCompile Include="Scripts\Init.ts" />
     <Content Include="Scripts\Init.js">
       <DependentUpon>Init.ts</DependentUpon>
@@ -244,8 +246,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="$(ProjectDir)\**\*.ts" />
   </ItemGroup>
-
-
   <Target Name="TypeScriptCompile" BeforeTargets="Build">
     <Message Text="Compiling TypeScript files" />
     <Exec Command="&quot;$(SolutionDir)\tools\TypeScript\tsc&quot; -target ES5 @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
