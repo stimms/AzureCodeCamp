@@ -88,11 +88,11 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li>@Html.ActionLink("About", controllerName: "Home", actionName: "Index")</li>
-                <li>@Html.ActionLink("Upcoming", controllerName: "Upcoming",actionName: "Index")</li>
-                <li>@Html.ActionLink("Recipes", controllerName: "Recipe", actionName: "Index")</li>
-                <li>@Html.ActionLink("Add Your Event", controllerName: "Meal", actionName: "Create")</li>
-                <li>@Html.ActionLink("About", controllerName: "Home", actionName: "About" )</li>
+                <li class="menu-today">@Html.ActionLink("Today's", controllerName: "Home", actionName: "Index")</li>
+                <li class="menu-upcoming">@Html.ActionLink("Upcoming", controllerName: "Upcoming",actionName: "Index")</li>
+                <li class="menu-recipes">@Html.ActionLink("Recipes", controllerName: "Recipe", actionName: "Index")</li>
+                <li class="menu-meal">@Html.ActionLink("Add Your Event", controllerName: "Meal", actionName: "Create")</li>
+                <li class="menu-about">@Html.ActionLink("About", controllerName: "Home", actionName: "About" )</li>
               </ul>
             </div>
           </div>

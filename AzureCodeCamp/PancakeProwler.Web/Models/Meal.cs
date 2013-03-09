@@ -17,7 +17,7 @@ namespace PancakeProwler.Web.Models
         public string Address { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public Uri ImageLocation { get; set; }//link into blob storage
+        public string ImageLocation { get; set; }//link into blob storage
 
     }
 }
