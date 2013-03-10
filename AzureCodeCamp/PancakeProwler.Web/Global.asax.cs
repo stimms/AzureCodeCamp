@@ -1,12 +1,11 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using Autofac;
 using System.Linq;
-using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Http;
 using System.Web.Routing;
+using Autofac.Integration.Mvc;
+using System.Collections.Generic;
 
 namespace PancakeProwler.Web
 {

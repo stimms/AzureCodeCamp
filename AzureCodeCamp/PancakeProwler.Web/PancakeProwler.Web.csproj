@@ -156,6 +156,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Views\Notification\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Textarea.cshtml" />
     <TypeScriptCompile Include="Scripts\Init.ts" />
     <Content Include="Scripts\Init.js">
       <DependentUpon>Init.ts</DependentUpon>
