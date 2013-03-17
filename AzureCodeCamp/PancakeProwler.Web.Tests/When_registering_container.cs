@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xunit;
-using SharpTestsEx;
-using Moq;
+﻿using Moq;
 using NLog;
+using Xunit;
+using System;
 using Autofac;
+using System.Linq;
+using SharpTestsEx;
+using System.Collections.Generic;
 using PancakeProwler.Data.Common;
-using PancakeProwler.Data.Common.Repositories;
 using PancakeProwler.Web.Controllers;
+using PancakeProwler.Data.Common.Repositories;
 
 namespace PancakeProwler.Web.Tests
 {
