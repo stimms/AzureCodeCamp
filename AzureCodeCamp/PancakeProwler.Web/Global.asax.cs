@@ -36,15 +36,7 @@ namespace PancakeProwler.Web
         private void CreateContainer()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(_log);
-            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).AsImplementedInterfaces();
-
-            //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces();
-
-            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
-
-            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).Where(x => x.Name.EndsWith("Controller")).AsSelf().PropertiesAutowired();
-            _container = builder.Build();
+            _container = builder.BuildContainer(_log);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
         }
 
