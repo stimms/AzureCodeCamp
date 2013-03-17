@@ -1,10 +1,8 @@
-﻿using PancakeProwler.Data.Common.Models;
-using PancakeProwler.Data.Table.TableEntities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using PancakeProwler.Data.Common.Models;
+using PancakeProwler.Data.Table.TableEntities;
 
 namespace PancakeProwler.Data.Table
 {

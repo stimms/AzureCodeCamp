@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using PancakeProwler.Data.Common.Repositories;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
-using Microsoft.WindowsAzure;
-using PancakeProwler.Data.Table.TableEntities;
 using PancakeProwler.Data.Common.Models;
-using System.Collections;
+using Microsoft.WindowsAzure.Storage.Table;
+using PancakeProwler.Data.Common.Repositories;
+using PancakeProwler.Data.Table.TableEntities;
 
 namespace PancakeProwler.Data.Table.Repositories
 {
@@ -19,28 +16,33 @@ namespace PancakeProwler.Data.Table.Repositories
             CreateTable(TABLE_NAME);
         }
 
-        public IEnumerable<Common.Models.Recipe> List()
+        public IEnumerable<Recipe> List()
         {
-
             var tableClient = GetClient();
 
-            // Create the CloudTable object that represents the "people" table.
             CloudTable table = tableClient.GetTableReference(TABLE_NAME);
 
-            // Construct the query operation for all customer entities where PartitionKey="Smith".
             TableQuery<RecipeTableEntity> query = new TableQuery<RecipeTableEntity>();
             var results = table.ExecuteQuery(query);
 
             return AutoMapper.Mapper.Map<IEnumerable<RecipeTableEntity>, IEnumerable<Recipe>>(results);
-            //.Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
         }
 
-        public Common.Models.Recipe GetById(Guid id)
+        public Recipe GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var tableClient = GetClient();
+
+            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
+
+            TableOperation retrieveOperation = TableOperation.Retrieve<RecipeTableEntity>("recipe", id.ToString());
+
+            
+            var result = table.Execute(retrieveOperation);
+
+            return AutoMapper.Mapper.Map<RecipeTableEntity, Recipe>((RecipeTableEntity)result.Result);
         }
 
-        public void Create(Common.Models.Recipe recipe)
+        public void Create(Recipe recipe)
         {
             var tableClient = GetClient();
 
@@ -53,9 +55,16 @@ namespace PancakeProwler.Data.Table.Repositories
 
         }
 
-        public void Edit(Common.Models.Recipe recipe)
+        public void Edit(Recipe recipe)
         {
-            throw new NotImplementedException();
+            var tableClient = GetClient();
+
+            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
+
+            var toInsert = AutoMapper.Mapper.Map<Recipe, RecipeTableEntity>(recipe);
+            TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(toInsert);
+
+            table.Execute(insertOrReplaceOperation);
         }
 
         public void Dispose()
