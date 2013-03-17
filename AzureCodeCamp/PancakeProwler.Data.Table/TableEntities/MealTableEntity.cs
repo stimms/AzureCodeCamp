@@ -1,17 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Storage.Table;
 
-namespace PancakeProwler.Data.Common.Models
+namespace PancakeProwler.Data.Table.TableEntities
 {
-    public class Meal
+    class MealTableEntity : TableEntity
     {
-        [ScaffoldColumn(false)]
-        public Guid Id { get; set; }
+        public MealTableEntity()
+        {
+            this.PartitionKey = "meal";
+        }
+        private Guid _id;
 
-        [Required]
+        public Guid Id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+                RowKey = this.RowKey;
+            }
+        }
+
         public string Name { get; set; }
 
         public string SponsorName { get; set; }
@@ -19,20 +33,15 @@ namespace PancakeProwler.Data.Common.Models
         public string SponsorEMail { get; set; }
         public string SponsorTwitter { get; set; }
 
-        [Required]
         public string ContactName { get; set; }
 
-        [EmailAddress]
         public string ContactEMail { get; set; }
         public string ContactPhoneNumber { get; set; }
 
-        [UIHint("Textarea")]
         public string Address { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        [UIHint("FileUpload")]
-        public string ImageLocation { get; set; }//link into blob storage
-
+        public string ImageLocation { get; set; }
     }
 }

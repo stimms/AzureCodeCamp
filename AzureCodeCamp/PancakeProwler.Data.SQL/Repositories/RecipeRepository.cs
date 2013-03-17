@@ -25,7 +25,7 @@ namespace PancakeProwler.Data.SQL.Repositories
             db.SaveChanges();
         }
 
-        public Common.Models.Recipe GetById(int id)
+        public Common.Models.Recipe GetById(Guid id)
         {
             return db.Recipes.Where(x => x.Id == id).SingleOrDefault();
         }

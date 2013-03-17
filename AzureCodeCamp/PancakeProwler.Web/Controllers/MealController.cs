@@ -23,7 +23,7 @@ namespace PancakeProwler.Web.Controllers
         //
         // GET: /Meal/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(Guid id)
         {
             Meal meal = MealRepository.GetById(id);
             if (meal == null)
@@ -59,7 +59,7 @@ namespace PancakeProwler.Web.Controllers
         //
         // GET: /Meal/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(Guid id)
         {
             Meal meal = MealRepository.GetById(id);
             if (meal == null)

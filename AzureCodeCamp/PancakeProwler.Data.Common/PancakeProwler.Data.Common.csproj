@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDataLayerConfigurator.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\PancakeProwlerUser.cs" />

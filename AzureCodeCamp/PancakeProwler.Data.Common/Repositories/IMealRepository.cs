@@ -8,7 +8,7 @@ namespace PancakeProwler.Data.Common.Repositories
     public interface IMealRepository : IDisposable
     {
         IEnumerable<Meal> List();
-        Meal GetById(int id);
+        Meal GetById(Guid id);
         void Create(Meal meal);
         void Edit(Meal meal);
     }

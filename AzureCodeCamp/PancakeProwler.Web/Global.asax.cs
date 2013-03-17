@@ -14,6 +14,7 @@ namespace PancakeProwler.Web
     public class MvcApplication : System.Web.HttpApplication
     {
         private NLog.Logger _log;
+        private IContainer _container;
 
         protected void Application_Start()
         {
@@ -24,6 +25,7 @@ namespace PancakeProwler.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             CreateLogger();
             CreateContainer();
+            InitDataLayer();
         }
 
         private void CreateLogger()
@@ -36,10 +38,19 @@ namespace PancakeProwler.Web
             var builder = new ContainerBuilder();
             builder.RegisterInstance(_log);
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces();
+
+            //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).Where(x => x.Name.EndsWith("Controller")).AsSelf().PropertiesAutowired();
-            var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            _container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
+        }
+
+        private void InitDataLayer()
+        {
+            _container.Resolve<PancakeProwler.Data.Common.IDataLayerConfigurator>().Configure();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace PancakeProwler.Web.Controllers
         //
         // GET: /Recipe/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(Guid id)
         {
             Recipe recipe = RecipeRepository.GetById(id);
             if (recipe == null)
@@ -49,6 +49,7 @@ namespace PancakeProwler.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                recipe.Id = Guid.NewGuid();
                 RecipeRepository.Create(recipe); 
                 return RedirectToAction("Index");
             }
@@ -59,7 +60,7 @@ namespace PancakeProwler.Web.Controllers
         //
         // GET: /Recipe/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(Guid id)
         {
             Recipe recipe = RecipeRepository.GetById(id);
             if (recipe == null)

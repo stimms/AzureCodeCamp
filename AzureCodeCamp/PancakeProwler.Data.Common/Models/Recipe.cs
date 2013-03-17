@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PancakeProwler.Data.Common.Models
 {
     public class Recipe
     {
-        public int Id { get; set; }
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
         public string Name { get; set; }
-        public PancakeProwlerUser Contributor { get; set; }
+        public String Contributor { get; set; }
 
-        //TODO: ingredients to be put in table storage
+        public IEnumerable<string> Ingredients { get; set; }
 
-        //TODO: actual steps to make recipe are to be located in table storage
+        public IEnumerable<string> Steps { get; set; }
 
-        //TODO: picture to be located in blob storage
+        public string ImageLocation { get; set; }
     }
 }
