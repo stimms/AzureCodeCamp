@@ -2,6 +2,7 @@
 using System.Linq;
 using PancakeProwler.Data.Common;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Storage;
 
 namespace PancakeProwler.Data.Table
 {
@@ -13,7 +14,14 @@ namespace PancakeProwler.Data.Table
             AutoMapperConfigurer.Configure();
             foreach (var repository in Repositories)
             {
-                repository.InitTableStorage();
+                try
+                {
+                    repository.InitTableStorage();
+                }
+                catch (StorageException ex)
+                {
+                    throw new Exception("Unable to initialize Azure storage. If you're running in a development environment then make sure that you have the storage emulator running. If you're using Azure proper make sure that you have the correct endpoint listed in the configuration file.", ex);
+                }
             }
         }
     }
