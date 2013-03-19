@@ -20,7 +20,7 @@ namespace PancakeProwler.Data.Table
                 }
                 catch (StorageException ex)
                 {
-                    throw new Exception("Unable to initialize Azure storage. If you're running in a development environment then make sure that you have the storage emulator running. If you're using Azure proper make sure that you have the correct endpoint listed in the configuration file.", ex);
+                    throw new Exception("Unable to initialize Azure storage. If you're running in a development environment then make sure that you have the storage emulator running. This can typically be done by typing 'storage emulator' into the windows search. If you're using Azure proper make sure that you have the correct endpoint listed in the configuration file.", ex);
                 }
             }
         }
