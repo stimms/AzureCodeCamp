@@ -1,11 +1,7 @@
-﻿using System;
-using Autofac;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Http;
 using System.Web.Routing;
 using Autofac.Integration.Mvc;
-using System.Collections.Generic;
 
 namespace PancakeProwler.Web
 {
@@ -14,8 +10,7 @@ namespace PancakeProwler.Web
     public class MvcApplication : System.Web.HttpApplication
     {
         private NLog.Logger _log;
-        private IContainer _container;
-
+        
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -36,15 +31,14 @@ namespace PancakeProwler.Web
         private void CreateContainer()
         {
             var builder = new ContainerBuilder();
-            _container = builder.BuildContainer(_log);
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
+            var container = builder.BuildContainer(_log);
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
         private void InitDataLayer()
         {
-            //NOTE: This is crashing when I try to use InstancePerHttpRequest configuration for 
-            //      repositories and db context.  Need to review with stimms
-          //  _container.Resolve<PancakeProwler.Data.Common.IDataLayerConfigurator>().Configure();
+            //NOTE: Use DependencyResolver.Current here instead of accessing the container directly
+            DependencyResolver.Current.GetService<Data.Common.IDataLayerConfigurator>().Configure();
         }
     }
 }
