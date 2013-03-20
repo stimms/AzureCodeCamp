@@ -84,10 +84,5 @@ namespace PancakeProwler.Web.Controllers
             return View(recipe);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            RecipeRepository.Dispose(); 
-            base.Dispose(disposing);
-        }
     }
 }

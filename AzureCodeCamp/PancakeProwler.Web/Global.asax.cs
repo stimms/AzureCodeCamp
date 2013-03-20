@@ -42,7 +42,9 @@ namespace PancakeProwler.Web
 
         private void InitDataLayer()
         {
-            _container.Resolve<PancakeProwler.Data.Common.IDataLayerConfigurator>().Configure();
+            //NOTE: This is crashing when I try to use InstancePerHttpRequest configuration for 
+            //      repositories and db context.  Need to review with stimms
+          //  _container.Resolve<PancakeProwler.Data.Common.IDataLayerConfigurator>().Configure();
         }
     }
 }

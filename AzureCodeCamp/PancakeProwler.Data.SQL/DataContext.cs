@@ -21,5 +21,10 @@ namespace PancakeProwler.Data.SQL
         public DbSet<Recipe> Recipes { get; set; }
 
         public DbSet<Meal> Meals { get; set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }

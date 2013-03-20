@@ -5,49 +5,35 @@ using PancakeProwler.Data.Common.Repositories;
 
 namespace PancakeProwler.Data.SQL.Repositories
 {
-    public class MealRepository:IMealRepository, IDisposable
+    public class MealRepository : IMealRepository
     {
-          private DataContext db = new DataContext();
+        private DataContext _dataContext;
+
+        public MealRepository(DataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
+
         public IEnumerable<Common.Models.Meal> List()
         {
-            return db.Meals.ToList();
+            return _dataContext.Meals.ToList();
         }
 
         public void Create(Common.Models.Meal meal)
         {
-            db.Meals.Add(meal);
-            db.SaveChanges();
+            _dataContext.Meals.Add(meal);
+            _dataContext.SaveChanges();
         }
 
         public void Edit(Common.Models.Meal meal)
         {
-            db.Entry(meal).State = System.Data.EntityState.Modified;
-            db.SaveChanges();
+            _dataContext.Entry(meal).State = System.Data.EntityState.Modified;
+            _dataContext.SaveChanges();
         }
 
         public Common.Models.Meal GetById(Guid id)
         {
-            return db.Meals.Where(x => x.Id == id).SingleOrDefault();
+            return _dataContext.Meals.Where(x => x.Id == id).SingleOrDefault();
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-                if (db != null)
-                {
-                    db.Dispose();
-                    db = null;
-                }
-        }
-        ~MealRepository()
-        {
-            Dispose(false);
-        }
-
     }
 }

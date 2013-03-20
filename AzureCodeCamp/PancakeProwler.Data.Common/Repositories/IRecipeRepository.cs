@@ -5,7 +5,7 @@ using PancakeProwler.Data.Common.Models;
 
 namespace PancakeProwler.Data.Common.Repositories
 {
-    public interface IRecipeRepository : IDisposable
+    public interface IRecipeRepository
     {
         IEnumerable<Recipe> List();
         Recipe GetById(Guid id);
