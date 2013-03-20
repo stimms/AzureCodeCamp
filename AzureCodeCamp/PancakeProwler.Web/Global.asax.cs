@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Routing;
 using Autofac.Integration.Mvc;
+using System.Web.Optimization;
 
 namespace PancakeProwler.Web
 {
@@ -18,9 +19,11 @@ namespace PancakeProwler.Web
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             CreateLogger();
             CreateContainer();
             InitDataLayer();
+            
         }
 
         private void CreateLogger()
