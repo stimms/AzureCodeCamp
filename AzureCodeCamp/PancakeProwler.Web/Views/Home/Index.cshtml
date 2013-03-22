@@ -1,32 +1,77 @@
-﻿
+﻿<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 
- <!-- Jumbotron -->
-      <div class="jumbotron" style="background-image: url('/Content/img/pancakes.jpg')">
-        <h1>Pancakes!</h1>
-        <p class="lead">I'm a map, a map, a map. I'm a map which tells you were to get your pancakes.</p>
-        <a class="btn btn-large btn-success" href="#">Get Notifications</a>
-      </div>
+<!-- Jumbotron -->
+<div class="jumbotron" style="background-image: url('/Content/img/pancakes.jpg')">
+    <h1>Pancakes!</h1>
+    
+    <div id="pancake_map" style="position: relative; width: 100%; height: 600px ">
+    </div>
+    <a class="btn btn-large btn-success" href="#">Get Notifications</a>
+</div>
 
-      <hr>
+<hr>
 
-      <!-- Example row of columns -->
-      <div class="row-fluid">
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
+<!-- Example row of columns -->
+<div class="row-fluid">
+    <div class="span4">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>
+    <div class="span4">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>
+    <div class="span4">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+        <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>
+</div>
 
 @{Html.RenderAction(controllerName: "Notification", actionName: "Create");}
- 
+
+<script type="text/javascript">
+    $(function () {
+        var map;
+
+        var bindmap = function() {
+            //Add logic to actually display something on the map.
+            //Will look something like this:
+            //map.entities.clear();
+            //Events.forEach(function (event) {
+            //            var eventLocation = event.Location;
+            //            var geoLocation = new Microsoft.Maps.Location(eventLocation.Lat, eventLocation.Long);
+            //            var pushpin = new Microsoft.Maps.Pushpin(geoLocation);
+            //            pushpin.EventId = event.Id;
+            //            this.map.entities.push(pushpin);
+            //            var infoBox = new Microsoft.Maps.Infobox(geoLocation, {
+            //                title: event.Title,
+            //                titleClickHandler: someMethodThatDoesSomethingWhenYouClickOnAnEvent(event),
+            //                description: event.Description,
+            //                pushpin: pushpin
+            //            });
+            //            this.map.entities.push(infoBox);
+            //        }
+            //    }
+            //});
+
+        };
+        
+        Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
+            callback: function () {
+                map = new Microsoft.Maps.Map(document.getElementById("pancake_map"), {
+                    //NOTE: This key belongs to the Calgary .NET User Group and is for educational purposes. For more information, contact David Paquette (Dave_Paquette on twitter)
+                    credentials: "AppR9q-SG6Qtlh_6Nh6ZB2swEwxHmbbZeakhYvQAMRrYR384NFRghT5uybCR-ehX",
+                    center: new Microsoft.Maps.Location(51.0175, -114.0669),
+                    zoom: 10,
+                    theme: new Microsoft.Maps.Themes.BingTheme(),
+                    enableSearchLogo: false,
+                    showBreadcrumb: false
+                });
+                bindmap();
+            }
+        });
+    });
+</script>
