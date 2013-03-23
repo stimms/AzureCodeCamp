@@ -6,11 +6,11 @@ module PancakeProwler.Home.Index {
 
         constructor(public Events: any[], public OnClickHandler: (any)=>any) { }
 
-        Bindmap() {
+        bindmap() {
             //Add logic to actually display something on the map.
             //Will look something like this:
             this.map.entities.clear();
-            this.Events.forEach(function (event) {
+            this.Events.forEach( (event) => {
                         var eventLocation = event.Location;
                         var geoLocation = new Microsoft.Maps.Location(eventLocation.Lat, eventLocation.Long);
                         var pushpin = new Microsoft.Maps.Pushpin(geoLocation);
@@ -27,7 +27,7 @@ module PancakeProwler.Home.Index {
                
 
         };
-        Init() {
+        init() {
             Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
                 callback:  () => {
                     this.map = new Microsoft.Maps.Map(document.getElementById("pancake_map"), {
@@ -39,7 +39,7 @@ module PancakeProwler.Home.Index {
                         enableSearchLogo: false,
                         showBreadcrumb: false
                     });
-                    this.Bindmap();
+                    this.bindmap();
                 }
             });
         }

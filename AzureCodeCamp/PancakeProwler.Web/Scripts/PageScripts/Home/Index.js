@@ -7,24 +7,25 @@ var PancakeProwler;
                     this.Events = Events;
                     this.OnClickHandler = OnClickHandler;
                 }
-                BingMap.prototype.Bindmap = function () {
+                BingMap.prototype.bindmap = function () {
+                    var _this = this;
                     this.map.entities.clear();
                     this.Events.forEach(function (event) {
                         var eventLocation = event.Location;
                         var geoLocation = new Microsoft.Maps.Location(eventLocation.Lat, eventLocation.Long);
                         var pushpin = new Microsoft.Maps.Pushpin(geoLocation);
                         pushpin.EventId = event.Id;
-                        this.map.entities.push(pushpin);
+                        _this.map.entities.push(pushpin);
                         var infoBox = new Microsoft.Maps.Infobox(geoLocation, {
                             title: event.Title,
-                            titleClickHandler: this.OnClickHandler(event),
+                            titleClickHandler: _this.OnClickHandler(event),
                             description: event.Description,
                             pushpin: pushpin
                         });
-                        this.map.entities.push(infoBox);
+                        _this.map.entities.push(infoBox);
                     });
                 };
-                BingMap.prototype.Init = function () {
+                BingMap.prototype.init = function () {
                     var _this = this;
                     Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
                         callback: function () {
@@ -36,7 +37,7 @@ var PancakeProwler;
                                 enableSearchLogo: false,
                                 showBreadcrumb: false
                             });
-                            _this.Bindmap();
+                            _this.bindmap();
                         }
                     });
                 };

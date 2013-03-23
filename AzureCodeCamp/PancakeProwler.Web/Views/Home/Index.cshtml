@@ -34,7 +34,7 @@
 
 <script type="text/javascript">
     $(function () {
-        var map = new PancakeProwler.Home.Index.BingMap();
+        var map = new PancakeProwler.Home.Index.BingMap([{ Location: { Lat: 51.0175, Long: -114.0669}, Id: 7, Title: "title", Description: "des" }], function () { alert("hi"); });
         map.init();
     });
 </script>
