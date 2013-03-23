@@ -34,44 +34,7 @@
 
 <script type="text/javascript">
     $(function () {
-        var map;
-
-        var bindmap = function() {
-            //Add logic to actually display something on the map.
-            //Will look something like this:
-            //map.entities.clear();
-            //Events.forEach(function (event) {
-            //            var eventLocation = event.Location;
-            //            var geoLocation = new Microsoft.Maps.Location(eventLocation.Lat, eventLocation.Long);
-            //            var pushpin = new Microsoft.Maps.Pushpin(geoLocation);
-            //            pushpin.EventId = event.Id;
-            //            this.map.entities.push(pushpin);
-            //            var infoBox = new Microsoft.Maps.Infobox(geoLocation, {
-            //                title: event.Title,
-            //                titleClickHandler: someMethodThatDoesSomethingWhenYouClickOnAnEvent(event),
-            //                description: event.Description,
-            //                pushpin: pushpin
-            //            });
-            //            this.map.entities.push(infoBox);
-            //        }
-            //    }
-            //});
-
-        };
-        
-        Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
-            callback: function () {
-                map = new Microsoft.Maps.Map(document.getElementById("pancake_map"), {
-                    //NOTE: This key belongs to the Calgary .NET User Group and is for educational purposes. For more information, contact David Paquette (Dave_Paquette on twitter)
-                    credentials: "AppR9q-SG6Qtlh_6Nh6ZB2swEwxHmbbZeakhYvQAMRrYR384NFRghT5uybCR-ehX",
-                    center: new Microsoft.Maps.Location(51.0175, -114.0669),
-                    zoom: 10,
-                    theme: new Microsoft.Maps.Themes.BingTheme(),
-                    enableSearchLogo: false,
-                    showBreadcrumb: false
-                });
-                bindmap();
-            }
-        });
+        var map = new PancakeProwler.Home.Index.BingMap();
+        map.init();
     });
 </script>

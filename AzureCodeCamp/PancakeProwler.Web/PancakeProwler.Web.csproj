@@ -170,6 +170,10 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <TypeScriptCompile Include="Scripts\PageScripts\Home\Index.ts" />
+    <Content Include="Scripts\PageScripts\Home\Index.js">
+      <DependentUpon>Index.ts</DependentUpon>
+    </Content>
     <Content Include="Views\Notification\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Textarea.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FileUpload.cshtml" />
