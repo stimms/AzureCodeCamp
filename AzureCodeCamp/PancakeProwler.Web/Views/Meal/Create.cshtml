@@ -12,8 +12,81 @@
     <fieldset>
         <legend>Meal</legend>
 
-        @Html.EditorForModel()
-
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <h3>Sponsor</h3>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.SponsorName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SponsorName)
+            @Html.ValidationMessageFor(model => model.SponsorName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SponsorEMail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SponsorEMail)
+            @Html.ValidationMessageFor(model => model.SponsorEMail)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SponsorTwitter)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SponsorTwitter)
+            @Html.ValidationMessageFor(model => model.SponsorTwitter)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SponsorWebSite)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SponsorWebSite)
+            @Html.ValidationMessageFor(model => model.SponsorWebSite)
+        </div>
+        <h3>Contact Information</h3>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContactEMail)
+            @Html.ValidationMessageFor(model => model.ContactEMail)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactPhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContactPhoneNumber)
+            @Html.ValidationMessageFor(model => model.ContactPhoneNumber)
+        </div>
+        <h3>Event Information</h3>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        @Html.EditorFor(model => model.Latitude)
+        @Html.EditorFor(model =>model.Longitude)
         <p>
             <input type="submit" value="Create" />
         </p>
