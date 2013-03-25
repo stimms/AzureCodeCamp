@@ -1,4 +1,5 @@
-﻿<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+﻿@model IEnumerable<PancakeProwler.Data.Common.Models.Meal>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 
 <!-- Jumbotron -->
 <div class="jumbotron" style="background-image: url('/Content/img/pancakes.jpg')">
@@ -33,8 +34,9 @@
 @{Html.RenderAction(controllerName: "Notification", actionName: "Create");}
 
 <script type="text/javascript">
+    var events = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(x => new { Id = x.Id, Location = new { Lat= x.Latitude, Long = x.Longitude }, Title = x.Name, Description = x.Description })))
     $(function () {
-        var map = new PancakeProwler.Home.Index.BingMap([{ Location: { Lat: 51.0175, Long: -114.0669}, Id: 7, Title: "title", Description: "des" }], function () { alert("hi"); });
+        var map = new PancakeProwler.Home.Index.BingMap(events, function () {  });
         map.init();
     });
 </script>

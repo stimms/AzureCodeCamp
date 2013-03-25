@@ -49,6 +49,7 @@ namespace PancakeProwler.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                meal.Id = Guid.NewGuid();
                 MealRepository.Create(meal);
                 return RedirectToAction("Index");
             }

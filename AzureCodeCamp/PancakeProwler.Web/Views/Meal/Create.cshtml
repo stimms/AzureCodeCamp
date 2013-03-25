@@ -53,6 +53,13 @@
             @Html.LabelFor(model => model.ContactName)
         </div>
         <div class="editor-field">
+            @Html.EditorFor(model => model.ContactName)
+            @Html.ValidationMessageFor(model => model.ContactName)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.ContactEMail)
+        </div>
+        <div class="editor-field">
             @Html.EditorFor(model => model.ContactEMail)
             @Html.ValidationMessageFor(model => model.ContactEMail)
         </div>
@@ -99,4 +106,17 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(function () {
+        $("#Address").blur(function () {
+            $.ajax({
+                url: 'http://dev.virtualearth.net/REST/v1/Locations/CA/AB/-/Calgary/' + encodeURIComponent($("#Address").val()) + '?maxResults=1&key=AppR9q-SG6Qtlh_6Nh6ZB2swEwxHmbbZeakhYvQAMRrYR384NFRghT5uybCR-ehX&JsonType=callback',
+                dataType: 'jsonp', jsonpCallback: "jsoncallback", success: function (result) { $("#Latitude").val(result.resourceSets[0].resources[0].point.coordinates[0]); 
+                                                                                               $("#Longitude").val(result.resourceSets[0].resources[0].point.coordinates[1]);},
+                jsonp: 'jsonp'
+            });
+        });
+    });
+</script>
 }
+
