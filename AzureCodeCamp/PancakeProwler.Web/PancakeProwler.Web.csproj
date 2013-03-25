@@ -171,6 +171,10 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <TypeScriptCompile Include="Scripts\PageScripts\Meal\Create.ts" />
+    <Content Include="Scripts\PageScripts\Meal\Create.js">
+      <DependentUpon>Create.ts</DependentUpon>
+    </Content>
     <Content Include="Views\Shared\EditorTemplates\Hidden.cshtml" />
     <TypeScriptCompile Include="Scripts\PageScripts\Home\Index.ts" />
     <Content Include="Scripts\PageScripts\Home\Index.js">
