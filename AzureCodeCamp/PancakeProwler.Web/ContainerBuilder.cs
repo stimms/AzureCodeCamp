@@ -1,10 +1,10 @@
-﻿using Autofac.Integration.Mvc;
-using NLog;
+﻿using NLog;
 using System;
 using Autofac;
 using System.Linq;
-using System.Collections.Generic;
+using Autofac.Integration.Mvc;
 using PancakeProwler.Data.SQL;
+using System.Collections.Generic;
 
 namespace PancakeProwler.Web
 {
@@ -21,10 +21,11 @@ namespace PancakeProwler.Web
             builder.RegisterAssemblyTypes(typeof(Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerHttpRequest();
             builder.RegisterAssemblyTypes(typeof(Data.SQL.Repositories.MealRepository).Assembly).AsImplementedInterfaces().InstancePerHttpRequest();
             
-            
 
             //Uncomment for Azure table storage
             //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+
+            builder.RegisterType<PancakeProwler.Data.Common.Repositories.BlobImageRepository>().AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).Where(x => x.Name.EndsWith("Controller")).AsSelf().PropertiesAutowired();
             return builder.Build();

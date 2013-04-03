@@ -68,6 +68,7 @@
     <Compile Include="Configurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\BlobImageRepository.cs" />
     <Compile Include="Repositories\ITableStorageRepository.cs" />
     <Compile Include="Repositories\MealRepository.cs" />
     <Compile Include="Repositories\RecipeRepository.cs" />

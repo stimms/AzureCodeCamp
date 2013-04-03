@@ -45,6 +45,7 @@
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\PancakeProwlerUser.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Repositories\IImageRepository.cs" />
     <Compile Include="Repositories\IMealRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRecipeRepository.cs" />

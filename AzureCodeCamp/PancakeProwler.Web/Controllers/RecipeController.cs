@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data;
+using System.Web;
 using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Generic;
@@ -12,6 +12,7 @@ namespace PancakeProwler.Web.Controllers
     {
 
         public IRecipeRepository RecipeRepository { get; set; }
+        public IImageRepository ImageRepository {get;set;}
         //
         // GET: /Recipe/
 
@@ -45,12 +46,15 @@ namespace PancakeProwler.Web.Controllers
         // POST: /Recipe/Create
 
         [HttpPost]
-        public ActionResult Create(Recipe recipe)
+        public ActionResult Create(Recipe recipe, HttpPostedFileBase imageLocation)
         {
+            
             if (ModelState.IsValid)
             {
                 recipe.Id = Guid.NewGuid();
+                recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.ContentLength, imageLocation.InputStream).AbsoluteUri;
                 RecipeRepository.Create(recipe); 
+
                 return RedirectToAction("Index");
             }
 
