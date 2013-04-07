@@ -1,30 +1,64 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using PancakeProwler.Data.Common.Models;
+using Microsoft.WindowsAzure.Storage.Table;
 using PancakeProwler.Data.Common.Repositories;
+using PancakeProwler.Data.Table.TableEntities;
 
 namespace PancakeProwler.Data.Table.Repositories
 {
     class MealRepository : BaseRepository, IMealRepository, ITableStorageRepository
     {
-        public IEnumerable<Common.Models.Meal> List()
+        private const string TABLE_NAME = "meal";
+        public IEnumerable<Meal> List()
         {
-            throw new NotImplementedException();
+            var tableClient = GetClient();
+
+            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
+
+            var query = new TableQuery<MealTableEntity>();
+            var results = table.ExecuteQuery(query);
+
+            return AutoMapper.Mapper.Map<IEnumerable<MealTableEntity>, IEnumerable<Meal>>(results);
         }
 
-        public Common.Models.Meal GetById(Guid id)
+        public Meal GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var tableClient = GetClient();
+
+            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
+
+            TableOperation retrieveOperation = TableOperation.Retrieve<RecipeTableEntity>(TABLE_NAME , id.ToString());
+
+
+            var result = table.Execute(retrieveOperation);
+
+            return AutoMapper.Mapper.Map<MealTableEntity, Meal>((MealTableEntity)result.Result);
         }
 
-        public void Create(Common.Models.Meal meal)
+        public void Create(Meal meal)
         {
-            throw new NotImplementedException();
+            var tableClient = GetClient();
+
+            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
+
+            var toInsert = AutoMapper.Mapper.Map<Meal, MealTableEntity>(meal);
+            TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(toInsert);
+
+            table.Execute(insertOrReplaceOperation);
         }
 
-        public void Edit(Common.Models.Meal meal)
+        public void Edit(Meal meal)
         {
-            throw new NotImplementedException();
+            var tableClient = GetClient();
+
+            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
+
+            var toInsert = AutoMapper.Mapper.Map<Meal, MealTableEntity>(meal);
+            TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(toInsert);
+
+            table.Execute(insertOrReplaceOperation);
         }
 
         public void Dispose()
@@ -33,7 +67,7 @@ namespace PancakeProwler.Data.Table.Repositories
 
         public void InitTableStorage()
         {
-            CreateTable("meal");
+            CreateTable(TABLE_NAME);
         }
     }
 }

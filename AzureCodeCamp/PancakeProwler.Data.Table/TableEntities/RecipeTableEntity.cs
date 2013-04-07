@@ -28,9 +28,9 @@ namespace PancakeProwler.Data.Table.TableEntities
         public string Name { get; set; }
         public string Contributor { get; set; }
 
-        public IEnumerable<string> Ingredients { get; set; }
+        public string Ingredients { get; set; }
 
-        public IEnumerable<string> Steps { get; set; }
+        public string Steps { get; set; }
 
         public string ImageLocation { get; set; }
     }

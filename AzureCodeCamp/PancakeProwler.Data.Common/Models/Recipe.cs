@@ -16,9 +16,11 @@ namespace PancakeProwler.Data.Common.Models
         [Display(Name="Your Name")]
         public String Contributor { get; set; }
 
-        public IEnumerable<string> Ingredients { get; set; }
+        [UIHint("IngredientList")]
+        public string Ingredients { get; set; }
 
-        public IEnumerable<string> Steps { get; set; }
+        [UIHint("StepList")]
+        public string Steps { get; set; }
 
         [UIHint("FileUpload")]
         [Display(Name="Upload a picture of your creation")]

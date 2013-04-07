@@ -4,18 +4,31 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
-<fieldset>
-    <legend>Recipe</legend>
+    <div class="row">
+        <div class="span4" >
+            <img src="@Model.ImageLocation" />
+        </div>
+        <div class="span5" >
+            <h3>Ingredients</h3>
+            <ul>
+                @foreach (var ingredient in Model.Ingredients.Split('\n'))
+                { 
+                    <li>@ingredient</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <ol>
+        @foreach (var step in @Model.Steps.Split('\n'))
+        {
+            <li>@step</li> 
+        }
+        </ol>
+    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-</fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

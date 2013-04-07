@@ -12,7 +12,7 @@ namespace PancakeProwler.Web.Controllers
     {
 
         public IRecipeRepository RecipeRepository { get; set; }
-        public IImageRepository ImageRepository {get;set;}
+        public IImageRepository ImageRepository { get; set; }
         //
         // GET: /Recipe/
 
@@ -48,12 +48,13 @@ namespace PancakeProwler.Web.Controllers
         [HttpPost]
         public ActionResult Create(Recipe recipe, HttpPostedFileBase imageLocation)
         {
-            
+
             if (ModelState.IsValid)
             {
                 recipe.Id = Guid.NewGuid();
-                recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.ContentLength, imageLocation.InputStream).AbsoluteUri;
-                RecipeRepository.Create(recipe); 
+                if (imageLocation != null)
+                    recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.ContentLength, imageLocation.InputStream).AbsoluteUri;
+                RecipeRepository.Create(recipe);
 
                 return RedirectToAction("Index");
             }

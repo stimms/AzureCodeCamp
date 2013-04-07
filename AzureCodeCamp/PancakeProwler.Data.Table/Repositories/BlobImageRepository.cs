@@ -26,7 +26,15 @@ namespace PancakeProwler.Data.Common.Repositories
             CloudBlobContainer container = blobClient.GetContainerReference("recipeimages");//must be lowercase
             container.CreateIfNotExists();
 
+            SetPublicPermissions(container);
+
             return container;
+        }
+        private static void SetPublicPermissions(CloudBlobContainer container)
+        {
+            var permissions = new BlobContainerPermissions();
+            permissions.PublicAccess = BlobContainerPublicAccessType.Container;
+            container.SetPermissions(permissions);
         }
     }
 }

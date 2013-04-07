@@ -4,16 +4,28 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create Recipe</h2>
 
 @using (Html.BeginForm("Create", "Recipe", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Recipe</legend>
+        <legend></legend>
+        <label>@Html.LabelFor(x => x.Contributor)</label>
+        @Html.EditorFor(x => x.Contributor)
 
-        @Html.EditorForModel()
+        <label>@Html.LabelFor(x => x.Name)</label>
+        @Html.EditorFor(x => x.Name)
+
+        <label>@Html.LabelFor(x => x.Ingredients)</label>
+        @Html.EditorFor(x => x.Ingredients)
+
+        <label>@Html.LabelFor(x => x.Steps)</label>
+        @Html.EditorFor(x => x.Steps)
+
+        <label>@Html.LabelFor(x => x.ImageLocation)</label>
+        @Html.EditorFor(x => x.ImageLocation)
 
         <p>
             <input type="submit" value="Send your recipe" />
