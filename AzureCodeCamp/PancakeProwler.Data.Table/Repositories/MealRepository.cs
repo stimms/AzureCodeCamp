@@ -29,7 +29,7 @@ namespace PancakeProwler.Data.Table.Repositories
 
             CloudTable table = tableClient.GetTableReference(TABLE_NAME);
 
-            TableOperation retrieveOperation = TableOperation.Retrieve<RecipeTableEntity>(TABLE_NAME , id.ToString());
+            TableOperation retrieveOperation = TableOperation.Retrieve<MealTableEntity>(TABLE_NAME , id.ToString());
 
 
             var result = table.Execute(retrieveOperation);

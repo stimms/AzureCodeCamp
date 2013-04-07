@@ -13,7 +13,7 @@
         <div class="span5" >
             <h3>Ingredients</h3>
             <ul>
-                @foreach (var ingredient in Model.Ingredients.Split('\n'))
+                @foreach (var ingredient in Model.Ingredients.Split('\n').Where(x=> !String.IsNullOrWhiteSpace(x)))
                 { 
                     <li>@ingredient</li>
                 }
