@@ -1,5 +1,14 @@
-﻿@{
+﻿@model IEnumerable<PancakeProwler.Data.Common.Models.Meal>
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>Upcoming Meals</h2>
+
+<ul>
+    @foreach (var meal in Model)
+    {
+        <li>@Html.ActionLink(meal.Name, "Details", "Meal", new { id = meal.Id }, null)</li>
+    }
+
+</ul>
