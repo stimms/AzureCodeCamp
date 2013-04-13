@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") | <a href="#cookbookModal" role="button" data-toggle="modal">Generate Cookbook</a>
 </p>
 <table>
     <tr>
@@ -23,10 +23,39 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id } ) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) 
         </td>
     </tr>
 }
 
+<div id="cookbookModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Generate Cookbook</h3>
+  </div>
+  <div class="modal-body">
+    <fieldset>
+        <legend>Details for your personal cookbook</legend>
+        <label for="email">E-Mail</label>
+        <input name="email" id="email"/>
+        <label for="name">Name</label>
+        <input name="name" id="name"/>
+    </fieldset>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary generateCookbook">Send me my book</button>
+  </div>
+</div>
 </table>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var bookGenerator = new PancakeProwler.Recipe.Index.BookGenerator($(".generateCookbook"), $("#email"), $("#name"));
+        });
+</script>
+    
+}

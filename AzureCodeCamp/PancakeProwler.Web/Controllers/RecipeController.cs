@@ -13,6 +13,7 @@ namespace PancakeProwler.Web.Controllers
 
         public IRecipeRepository RecipeRepository { get; set; }
         public IImageRepository ImageRepository { get; set; }
+        public IBookCreationRequestRepository BookCreationRequestRepository { get; set; }
         //
         // GET: /Recipe/
 
@@ -87,6 +88,13 @@ namespace PancakeProwler.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View(recipe);
+        }
+
+        [HttpGet]
+        public ActionResult CreateBook(string eMail, string name)
+        {
+            BookCreationRequestRepository.Add(new BookCreationRequest { EMail = eMail, Name = name });
+            return new EmptyResult();
         }
 
     }
