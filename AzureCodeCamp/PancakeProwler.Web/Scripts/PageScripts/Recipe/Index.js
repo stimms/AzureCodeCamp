@@ -3,16 +3,19 @@ var PancakeProwler;
     (function (Recipe) {
         (function (Index) {
             var BookGenerator = (function () {
-                function BookGenerator(activationSelector, email, name) {
+                function BookGenerator(activationSelector, email, name, successAlert) {
                     this.email = email;
                     this.name = name;
+                    this.successAlert = successAlert;
                     $(activationSelector).on("click", $.proxy(this.submit, this));
                 }
                 BookGenerator.prototype.submit = function () {
-                    console.log(this);
+                    var _this = this;
                     $.get("/Recipe/CreateBook", {
                         eMail: this.email.val(),
                         name: this.name.val()
+                    }, function () {
+                        _this.successAlert.removeClass("hidden");
                     });
                 };
                 return BookGenerator;

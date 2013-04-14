@@ -34,14 +34,14 @@ namespace PancakeProwler.BookCreator
                 var message = queue.GetMessage();
                 if (message != null)
                 {
-                    SendCreationMessage(message);
+                    if(message.DequeueCount < 5)
+                        SendCreationMessage(message);
                     queue.DeleteMessage(message);
                 }
                 else
                 {
                     Thread.Sleep(new TimeSpan(0, 0, 0, 5));//5 seconds
                 }
-                
             }
         }
 
@@ -49,9 +49,15 @@ namespace PancakeProwler.BookCreator
         private static void SendCreationMessage(Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage message)
         {
             var decodedMessage = Newtonsoft.Json.JsonConvert.DeserializeObject<PancakeProwler.Data.Common.Models.BookCreationRequest>(message.AsString);
-
-            SendGridMail.SendGrid mailMessage = CreateEMailMessage(decodedMessage);
-            SendMessage(mailMessage);
+            try
+            {
+                SendGridMail.SendGrid mailMessage = CreateEMailMessage(decodedMessage);
+                SendMessage(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("Error sending", "Error");
+            }
             Trace.WriteLine(decodedMessage.EMail, "Information");
         }
         private static SendGridMail.SendGrid CreateEMailMessage(PancakeProwler.Data.Common.Models.BookCreationRequest decodedMessage)

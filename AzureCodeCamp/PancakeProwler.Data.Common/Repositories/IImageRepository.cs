@@ -6,6 +6,6 @@ namespace PancakeProwler.Data.Common.Repositories
 {
     public interface IImageRepository
     {
-        Uri Save(string contentType, System.IO.Stream inputStream);
+        Uri Save(string contentType, System.IO.Stream inputStream, string blobContainer = "");
     }
 }
