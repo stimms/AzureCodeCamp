@@ -34,16 +34,7 @@ namespace PancakeProwler.BookCreator
                 var message = queue.GetMessage();
                 if (message != null)
                 {
-                    var decodedMessage = Newtonsoft.Json.JsonConvert.DeserializeObject<PancakeProwler.Data.Common.Models.BookCreationRequest>(message.AsString);
-
-                    var mailMessage = SendGridMail.SendGrid.GetInstance();
-                    mailMessage.AddTo(decodedMessage.EMail);
-                    mailMessage.From = new System.Net.Mail.MailAddress("cookbook@pancakeprowler.com", "Pancake Prowler");
-                    mailMessage.Subject = "Cookbook Ready";
-                    mailMessage.Html = String.Format(@"Hello {0}, Your personalized cook book is available. To download it simply click <a href='{1}'>here</a>", decodedMessage.Name, GetCookBook(decodedMessage.Name));
-                    
-
-                    Trace.WriteLine(decodedMessage.EMail, "Information");
+                    SendCreationMessage(message);
                     queue.DeleteMessage(message);
                 }
                 else
@@ -54,32 +45,31 @@ namespace PancakeProwler.BookCreator
             }
         }
 
-        private Uri GetCookBook(string name)
+
+        private static void SendCreationMessage(Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage message)
         {
-            var document = new PdfDocument();
-            document.Info.Title = name + "'s personalized cookbook";
-            document.Info.Author = "Pancake Prowler";
+            var decodedMessage = Newtonsoft.Json.JsonConvert.DeserializeObject<PancakeProwler.Data.Common.Models.BookCreationRequest>(message.AsString);
 
-            var page = document.AddPage();
-
-            var graphics = XGraphics.FromPdfPage(page);
-
-            var font = new XFont("Verdana", 20, XFontStyle.BoldItalic);
-
-            graphics.DrawString(name + "'s personalized cookbook", 
-                font, 
-                XBrushes.Red, 
-                new System.Drawing.PointF((float)page.Width/2, (float)page.Height/2), 
-                XStringFormat.Center);
-
-            var saveStream = new MemoryStream();
-            document.Save(saveStream);
-
-            var memoryStream = new MemoryStream(saveStream.ToArray());
-            memoryStream.Seek(0, SeekOrigin.Begin);
-
-            var imageStore = new BlobImageRepository();
-            return imageStore.Save("application/pdf", memoryStream);
+            SendGridMail.SendGrid mailMessage = CreateEMailMessage(decodedMessage);
+            SendMessage(mailMessage);
+            Trace.WriteLine(decodedMessage.EMail, "Information");
+        }
+        private static SendGridMail.SendGrid CreateEMailMessage(PancakeProwler.Data.Common.Models.BookCreationRequest decodedMessage)
+        {
+            var mailMessage = SendGridMail.SendGrid.GetInstance();
+            mailMessage.AddTo(decodedMessage.EMail);
+            mailMessage.From = new System.Net.Mail.MailAddress("cookbook@pancakeprowler.com", "Pancake Prowler");
+            mailMessage.Subject = "Cookbook Ready";
+            mailMessage.Html = String.Format(@"Hello {0}, Your personalized cook book is available. To download it simply click <a href='{1}'>here</a>",
+                                   decodedMessage.Name,
+                                   new PdfCreator().GetCookBook(decodedMessage.Name));
+            return mailMessage;
+        }
+        private static void SendMessage(SendGridMail.SendGrid mailMessage)
+        {
+            var credentials = new NetworkCredential("username", "password");
+            var transportREST = SendGridMail.Transport.Web.GetInstance(credentials);
+            transportREST.Deliver(mailMessage);
         }
         public override bool OnStart()
         {
