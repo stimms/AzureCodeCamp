@@ -9,7 +9,7 @@ namespace PancakeProwler.Data.Common.Repositories
 {
     public class BlobImageRepository : IImageRepository
     {
-        public Uri Save(string contentType, int contentLength, System.IO.Stream inputStream)
+        public Uri Save(string contentType, System.IO.Stream inputStream)
         {
             var container = GetContainer();
             var blockBlob = container.GetBlockBlobReference(Guid.NewGuid().ToString());
@@ -18,12 +18,12 @@ namespace PancakeProwler.Data.Common.Repositories
             return blockBlob.Uri;
 
         }
-        private static CloudBlobContainer GetContainer()
+        private static CloudBlobContainer GetContainer(string blobContainer = "recipeimages")
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-            CloudBlobContainer container = blobClient.GetContainerReference("recipeimages");//must be lowercase
+            CloudBlobContainer container = blobClient.GetContainerReference(blobContainer);//must be lowercase
             container.CreateIfNotExists();
 
             SetPublicPermissions(container);

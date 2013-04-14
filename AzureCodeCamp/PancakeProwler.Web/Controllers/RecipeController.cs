@@ -54,7 +54,7 @@ namespace PancakeProwler.Web.Controllers
             {
                 recipe.Id = Guid.NewGuid();
                 if (imageLocation != null)
-                    recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.ContentLength, imageLocation.InputStream).AbsoluteUri;
+                    recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.InputStream).AbsoluteUri;
                 RecipeRepository.Create(recipe);
 
                 return RedirectToAction("Index");
