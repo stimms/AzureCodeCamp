@@ -15,4 +15,9 @@
       <Import moduleName="Diagnostics" />
     </Imports>
   </WebRole>
+  <WorkerRole name="PancakeProwler.BookCreator" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+  </WorkerRole>
 </ServiceDefinition>

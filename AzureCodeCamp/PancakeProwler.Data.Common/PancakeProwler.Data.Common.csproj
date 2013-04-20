@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDataLayerConfigurator.cs" />
+    <Compile Include="Models\BookCreationRequest.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\PancakeProwlerUser.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Repositories\IBookCreationRequestRepository.cs" />
     <Compile Include="Repositories\IImageRepository.cs" />
     <Compile Include="Repositories\IMealRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

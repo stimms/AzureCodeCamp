@@ -13,6 +13,7 @@ namespace PancakeProwler.Web.Controllers
 
         public IRecipeRepository RecipeRepository { get; set; }
         public IImageRepository ImageRepository { get; set; }
+        public IBookCreationRequestRepository BookCreationRequestRepository { get; set; }
         //
         // GET: /Recipe/
 
@@ -53,7 +54,7 @@ namespace PancakeProwler.Web.Controllers
             {
                 recipe.Id = Guid.NewGuid();
                 if (imageLocation != null)
-                    recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.ContentLength, imageLocation.InputStream).AbsoluteUri;
+                    recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.InputStream).AbsoluteUri;
                 RecipeRepository.Create(recipe);
 
                 return RedirectToAction("Index");
@@ -87,6 +88,13 @@ namespace PancakeProwler.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View(recipe);
+        }
+
+        [HttpGet]
+        public ActionResult CreateBook(string eMail, string name)
+        {
+            BookCreationRequestRepository.Add(new BookCreationRequest { EMail = eMail, Name = name });
+            return new EmptyResult();
         }
 
     }

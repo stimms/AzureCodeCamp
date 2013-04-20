@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.Common"
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "PancakeProwler.Azure", "PancakeProwler.Azure\PancakeProwler.Azure.ccproj", "{9A9277EC-B96D-44E6-A5B5-E49D2D38CDD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.Queue", "PancakeProwler.Data.Queue\PancakeProwler.Data.Queue.csproj", "{A4545760-A2E6-4489-80BA-4093CB6AA14F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.BookCreator", "PancakeProwler.BookCreator\PancakeProwler.BookCreator.csproj", "{D15673D7-F1EA-4BCB-927E-50162693E51A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,14 @@ Global
 		{9A9277EC-B96D-44E6-A5B5-E49D2D38CDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A9277EC-B96D-44E6-A5B5-E49D2D38CDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A9277EC-B96D-44E6-A5B5-E49D2D38CDD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4545760-A2E6-4489-80BA-4093CB6AA14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4545760-A2E6-4489-80BA-4093CB6AA14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4545760-A2E6-4489-80BA-4093CB6AA14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4545760-A2E6-4489-80BA-4093CB6AA14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15673D7-F1EA-4BCB-927E-50162693E51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15673D7-F1EA-4BCB-927E-50162693E51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15673D7-F1EA-4BCB-927E-50162693E51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15673D7-F1EA-4BCB-927E-50162693E51A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

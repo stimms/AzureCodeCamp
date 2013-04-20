@@ -37,6 +37,14 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PancakeProwler.BookCreator\PancakeProwler.BookCreator.csproj">
+      <Name>PancakeProwler.BookCreator</Name>
+      <Project>{d15673d7-f1ea-4bcb-927e-50162693e51a}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>PancakeProwler.BookCreator</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
     <ProjectReference Include="..\PancakeProwler.Web\PancakeProwler.Web.csproj">
       <Name>PancakeProwler.Web</Name>
       <Project>{8c705560-5081-4801-8393-91056602998e}</Project>
