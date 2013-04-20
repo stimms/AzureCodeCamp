@@ -6,7 +6,8 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -84,6 +85,9 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Address)
             @Html.ValidationMessageFor(model => model.Address)
+            <span class="hidden loading"><img src="~/Content/img/ajax-loader.gif" /></span>
+            <span class="hidden success"><img src="~/Content/img/task-complete.png" /></span>
+            <span class="hidden error"><img src="~/Content/img/task-incomplete.png" /></span>
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
@@ -93,7 +97,7 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         @Html.EditorFor(model => model.Latitude)
-        @Html.EditorFor(model =>model.Longitude)
+        @Html.EditorFor(model => model.Longitude)
         <p>
             <input type="submit" value="Create" />
         </p>
