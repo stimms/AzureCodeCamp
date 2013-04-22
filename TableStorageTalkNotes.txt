@@ -9,6 +9,7 @@ Durability
 . continuation tokens (maximum of 1000 records or the boundrary of a partition)
 . speed of queries
 . keeping and updating multiple projections
+. Updates possible by either replace or merge/patch
 . Entity group transactions
   - transactional
   - single partition
