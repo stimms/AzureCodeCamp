@@ -1,5 +1,6 @@
 Things to cover in talk about table storage
 
+Durability
 1. how table storage is set up 
 . flexible schema but there is a schema (single row 1MB each field 64KB)
 . partitions
