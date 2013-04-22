@@ -1,0 +1,15 @@
+Things to cover in talk about table storage
+
+1. how table storage is set up 
+. flexible schema but there is a schema (single row 1MB each field 64KB)
+. partitions
+. selecting partition keys
+. seleting row keys (prefixes and combined keys)
+. continuation tokens (maximum of 1000 records or the boundrary of a partition)
+. speed of queries
+. keeping and updating multiple projections
+. Entity group transactions
+  - transactional
+  - single partition
+  - maximum of 100 commands
+  
