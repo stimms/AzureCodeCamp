@@ -1,0 +1,13 @@
+Unstructured data
+Delivery at least once
+Messages are hidden during processing and must be deleted
+Partition key is the queue name
+Polled interface
+Batch retrieval of up to 32 messages - don't do that
+Dequeue count -  poison message
+64kb messages and queues up to 100TB
+non-persistant, messages expire after 7 days
+weirdly queue names have to be lower case
+can handle about 2000 messages a second
+No assurance of in order processing
+blob storage for large data

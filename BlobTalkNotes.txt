@@ -1,0 +1,7 @@
+As many containers as you need
+As many blobs in a container as you need
+
+How is a blob url built?
+up to 8K of metadata with the blob
+shared access signature -> presigned url which encodes permissions and a start and stop time. Cannot be revoked. Maximum end time is 1 hour. 
+Better to set up an access policy as they can be revoked by editing the access policy. 
