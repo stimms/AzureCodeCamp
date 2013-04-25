@@ -271,6 +271,10 @@
       <Project>{69b6aad3-9f25-4af4-bc11-f35042a6c648}</Project>
       <Name>PancakeProwler.Data.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Data.InMemory\PancakeProwler.Data.InMemory.csproj">
+      <Project>{334307d9-11a1-4059-a51c-205a4027bddb}</Project>
+      <Name>PancakeProwler.Data.InMemory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PancakeProwler.Data.Queue\PancakeProwler.Data.Queue.csproj">
       <Project>{a4545760-a2e6-4489-80ba-4093cb6aa14f}</Project>
       <Name>PancakeProwler.Data.Queue</Name>
