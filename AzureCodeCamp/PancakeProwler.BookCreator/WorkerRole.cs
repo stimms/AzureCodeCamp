@@ -1,18 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Net;
+using System.Linq;
 using System.Threading;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
-using Microsoft.WindowsAzure.ServiceRuntime;
+using System.Diagnostics;
+using System.Configuration;
+using System.Collections.Generic;
 using Microsoft.WindowsAzure.Storage;
-using PancakeProwler.Data.Common.Repositories;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
+using Microsoft.WindowsAzure.ServiceRuntime;
 
 
 namespace PancakeProwler.BookCreator
