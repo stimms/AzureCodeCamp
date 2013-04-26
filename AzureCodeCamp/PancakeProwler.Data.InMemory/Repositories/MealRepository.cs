@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using PancakeProwler.Data.Common.Models;
 using PancakeProwler.Data.Common.Repositories;
 
@@ -33,7 +33,10 @@ namespace PancakeProwler.Data.InMemory.Repositories
 
         public void Edit(Meal meal)
         {
-            //?
+            var toRemove = _meals.Where(x=>x.Id == meal.Id).FirstOrDefault();
+            if (toRemove != null)
+                _meals.Remove(toRemove);
+            _meals.Add(meal);
         }
     }
 }
