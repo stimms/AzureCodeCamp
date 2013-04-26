@@ -175,36 +175,22 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <TypeScriptCompile Include="Scripts\PageScripts\Recipe\Index.ts" />
-    <Content Include="Scripts\PageScripts\Recipe\Index.js">
-      <DependentUpon>Index.ts</DependentUpon>
-    </Content>
+    <Content Include="Scripts\Init.js" />
+    <Content Include="Scripts\PageScripts\Home\Index.js" />
+    <Content Include="Scripts\PageScripts\Meal\Create.js" />
+    <Content Include="Scripts\PageScripts\Recipe\Index.js" />
+    <Content Include="Scripts\PageScripts\Shared\Menu.js" />
     <Content Include="Views\Shared\EditorTemplates\IngredientList.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\StepList.cshtml" />
-    <TypeScriptCompile Include="Scripts\PageScripts\Meal\Create.ts" />
-    <Content Include="Scripts\PageScripts\Meal\Create.js">
-      <DependentUpon>Create.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\EditorTemplates\Hidden.cshtml" />
-    <TypeScriptCompile Include="Scripts\PageScripts\Home\Index.ts" />
-    <Content Include="Scripts\PageScripts\Home\Index.js">
-      <DependentUpon>Index.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Notification\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Textarea.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FileUpload.cshtml" />
-    <TypeScriptCompile Include="Scripts\Init.ts" />
-    <Content Include="Scripts\Init.js">
-      <DependentUpon>Init.ts</DependentUpon>
-    </Content>
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <TypeScriptCompile Include="Scripts\PageScripts\Shared\Menu.ts" />
-    <Content Include="Scripts\PageScripts\Shared\Menu.js">
-      <DependentUpon>Menu.ts</DependentUpon>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
-    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -231,6 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -251,7 +238,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>64293</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:53582/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -271,12 +258,22 @@
   <Target Name="AfterBuild">
   </Target> -->
   <ItemGroup>
-    <TypeScriptCompile Include="$(ProjectDir)\**\*.ts" />
+    <!--<TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\obj\Release\Package\PackageTmp\Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\Scripts\Init.ts" />
+    <TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\Scripts\PageScripts\Home\Index.ts" />
+    <TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\Scripts\PageScripts\Meal\Create.ts" />
+    <TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\Scripts\PageScripts\Recipe\Index.ts" />
+    <TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\Scripts\PageScripts\Shared\Menu.ts" />
+    <TypeScriptCompile Include="C:\dev-github\AzureCodeCamp\AzureCodeCamp\PancakeProwler.Web\\Scripts\typings\jquery\jquery.d.ts" />-->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PancakeProwler.Data.Common\PancakeProwler.Data.Common.csproj">
       <Project>{69b6aad3-9f25-4af4-bc11-f35042a6c648}</Project>
       <Name>PancakeProwler.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Data.InMemory\PancakeProwler.Data.InMemory.csproj">
+      <Project>{334307d9-11a1-4059-a51c-205a4027bddb}</Project>
+      <Name>PancakeProwler.Data.InMemory</Name>
     </ProjectReference>
     <ProjectReference Include="..\PancakeProwler.Data.Queue\PancakeProwler.Data.Queue.csproj">
       <Project>{a4545760-a2e6-4489-80ba-4093cb6aa14f}</Project>
@@ -291,8 +288,8 @@
       <Name>PancakeProwler.Data.Table</Name>
     </ProjectReference>
   </ItemGroup>
-  <Target Name="TypeScriptCompile" BeforeTargets="Build">
+  <!--<Target Name="TypeScriptCompile" BeforeTargets="Build">
     <Message Text="Compiling TypeScript files" />
     <Exec Command="&quot;$(SolutionDir)\tools\TypeScript\tsc&quot; -target ES5 @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-  </Target>
+  </Target>-->
 </Project>
