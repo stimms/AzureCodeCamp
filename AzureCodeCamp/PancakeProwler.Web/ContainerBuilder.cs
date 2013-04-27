@@ -17,7 +17,7 @@ namespace PancakeProwler.Web
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).AsImplementedInterfaces();
 
             //Uncomment for InMemory Storage
-            builder.RegisterAssemblyTypes(typeof (PancakeProwler.Data.InMemory.Repositories.RecipeRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.InMemory.Repositories.RecipeRepository).Assembly)
                    .AsImplementedInterfaces()
                    .SingleInstance();
 

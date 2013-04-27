@@ -172,6 +172,8 @@
     <Content Include="Content\img\task-complete.png" />
     <Content Include="Content\img\task-incomplete.png" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\itbatmanTest01 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\itbatmanTest01 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -217,7 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

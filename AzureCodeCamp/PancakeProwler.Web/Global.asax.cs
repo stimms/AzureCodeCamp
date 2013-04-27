@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using Autofac.Integration.Mvc;
 using System.Web.Optimization;
+using System.Data.Entity;
 
 namespace PancakeProwler.Web
 {
@@ -40,8 +41,10 @@ namespace PancakeProwler.Web
 
         private void InitDataLayer()
         {
-            //NOTE: Use DependencyResolver.Current here instead of accessing the container directly
-            DependencyResolver.Current.GetService<Data.Common.IDataLayerConfigurator>().Configure();
+          //NOTE: Use DependencyResolver.Current here instead of accessing the container directly
+          //Database.SetInitializer(new MigrateDatabaseToLatestVersion<PancakeProwler.Data.SQL.DataContext, PancakeProwler.Data.SQL.Migrations.Configuration>());
+
+          DependencyResolver.Current.GetService<Data.Common.IDataLayerConfigurator>().Configure();
         }
     }
 }
