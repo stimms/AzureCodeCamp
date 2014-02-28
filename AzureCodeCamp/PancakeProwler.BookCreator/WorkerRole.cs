@@ -68,7 +68,7 @@ namespace PancakeProwler.BookCreator
         private static void SendMessage(SendGridMail.SendGrid mailMessage)
         {
             var credentials = new NetworkCredential("username", "password");
-            var transportREST = SendGridMail.Transport.Web.GetInstance(credentials);
+            var transportREST = SendGridMail.Web.GetInstance(credentials);
             transportREST.Deliver(mailMessage);
         }
         public override bool OnStart()

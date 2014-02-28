@@ -7,7 +7,7 @@
     </ConfigurationSettings>
   </Role>
   <Role name="PancakeProwler.BookCreator">
-    <Instances count="1" />
+    <Instances count="5" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>

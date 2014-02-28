@@ -27,7 +27,7 @@ namespace PancakeProwler.Data.SQL.Repositories
 
         public void Edit(Common.Models.Meal meal)
         {
-            _dataContext.Entry(meal).State = System.Data.EntityState.Modified;
+            _dataContext.Entry(meal).State = System.Data.Entity.EntityState.Modified;
             _dataContext.SaveChanges();
         }
 
