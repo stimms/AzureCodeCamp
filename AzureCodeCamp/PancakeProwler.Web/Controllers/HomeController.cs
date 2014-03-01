@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using PancakeProwler.Data.Common.Repositories;
+using Microsoft.ApplicationServer.Caching;
 
 namespace PancakeProwler.Web.Controllers
 {
@@ -16,8 +17,25 @@ namespace PancakeProwler.Web.Controllers
             return View(meals);
         }
 
+        public ActionResult CacheDemo()
+        {
+
+            var cache = new DataCache();
+            ViewBag.CacheValue = cache.Get("key");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CacheDemo(string toCache)
+        {
+            var cache = new DataCache();
+            cache.Put("key", toCache);
+            return View();
+        }
+
         public ActionResult About()
         {
+            
             return View();
         }
 

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "CacheDemo";
+}
+
+<h2>Cache Demo</h2>
+@using(Html.BeginForm())
+{
+    <input type="text" class="form-control" name="toCache"/><input type="submit" value="Save to cache" class="btn" />
+}
+
+@ViewBag.CacheValue
