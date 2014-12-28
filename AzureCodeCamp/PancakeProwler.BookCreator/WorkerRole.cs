@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using SendGrid;
 
 
 namespace PancakeProwler.BookCreator
@@ -45,7 +46,7 @@ namespace PancakeProwler.BookCreator
             var decodedMessage = Newtonsoft.Json.JsonConvert.DeserializeObject<PancakeProwler.Data.Common.Models.BookCreationRequest>(message.AsString);
             try
             {
-                SendGridMail.SendGrid mailMessage = CreateEMailMessage(decodedMessage);
+                var mailMessage = CreateEMailMessage(decodedMessage);
                 SendMessage(mailMessage);
             }
             catch (Exception ex)
@@ -54,9 +55,9 @@ namespace PancakeProwler.BookCreator
             }
             Trace.WriteLine(decodedMessage.EMail, "Information");
         }
-        private static SendGridMail.SendGrid CreateEMailMessage(PancakeProwler.Data.Common.Models.BookCreationRequest decodedMessage)
+        private static SendGridMessage CreateEMailMessage(PancakeProwler.Data.Common.Models.BookCreationRequest decodedMessage)
         {
-            var mailMessage = SendGridMail.SendGrid.GetInstance();
+            var mailMessage = new SendGridMessage();
             mailMessage.AddTo(decodedMessage.EMail);
             mailMessage.From = new System.Net.Mail.MailAddress("cookbook@pancakeprowler.com", "Pancake Prowler");
             mailMessage.Subject = "Cookbook Ready";
@@ -65,10 +66,10 @@ namespace PancakeProwler.BookCreator
                                    new PdfCreator().GetCookBook(decodedMessage.Name));
             return mailMessage;
         }
-        private static void SendMessage(SendGridMail.SendGrid mailMessage)
+        private static void SendMessage(SendGridMessage mailMessage)
         {
             var credentials = new NetworkCredential("username", "password");
-            var transportREST = SendGridMail.Web.GetInstance(credentials);
+            var transportREST = new Web(credentials);
             transportREST.Deliver(mailMessage);
         }
         public override bool OnStart()
