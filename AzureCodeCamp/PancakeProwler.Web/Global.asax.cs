@@ -41,9 +41,6 @@ namespace PancakeProwler.Web
 
         private void InitDataLayer()
         {
-          //NOTE: Use DependencyResolver.Current here instead of accessing the container directly
-          //Database.SetInitializer(new MigrateDatabaseToLatestVersion<PancakeProwler.Data.SQL.DataContext, PancakeProwler.Data.SQL.Migrations.Configuration>());
-
           DependencyResolver.Current.GetService<Data.Common.IDataLayerConfigurator>().Configure();
         }
     }

@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace PancakeProwler.Data.Common.Models
 {
     public class Meal
     {
         [ScaffoldColumn(false)]
+        [JsonProperty(PropertyName = "id")]
         public Guid Id { get; set; }
 
         [Required]
@@ -41,10 +44,10 @@ namespace PancakeProwler.Data.Common.Models
         public string Address { get; set; }
 
         [UIHint("Hidden")]
-        public decimal Latitude { get; set; }
+        public decimal? Latitude { get; set; }
 
         [UIHint("Hidden")]
-        public decimal Longitude { get; set; }
+        public decimal? Longitude { get; set; }
 
         public DateTime Date { get; set; }
 
