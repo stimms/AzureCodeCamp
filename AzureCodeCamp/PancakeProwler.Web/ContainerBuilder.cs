@@ -26,7 +26,10 @@ namespace PancakeProwler.Web
             //builder.RegisterAssemblyTypes(typeof(Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerHttpRequest();           
 
             //Uncomment for Azure table storage
-            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+            //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+
+            //Uncomment for Azure DocumentDb storage
+            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.DocumentDb.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerHttpRequest().PropertiesAutowired();
 
             builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Queue.Repositories.BookCreationRequestRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
 

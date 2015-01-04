@@ -14,15 +14,12 @@ namespace PancakeProwler.Web.Controllers
 
         //
         // GET: /Meal/
-
         public ActionResult Index()
         {
             return View(MealRepository.List());
         }
 
-        //
-        // GET: /Meal/Details/5
-
+       
         public ActionResult Details(Guid id)
         {
             Meal meal = MealRepository.GetById(id);
@@ -35,7 +32,6 @@ namespace PancakeProwler.Web.Controllers
 
         //
         // GET: /Meal/Create
-
         public ActionResult Create()
         {
             return View();
@@ -43,7 +39,6 @@ namespace PancakeProwler.Web.Controllers
 
         //
         // POST: /Meal/Create
-
         [HttpPost]
         public ActionResult Create(Meal meal)
         {
@@ -59,7 +54,6 @@ namespace PancakeProwler.Web.Controllers
 
         //
         // GET: /Meal/Edit/5
-
         public ActionResult Edit(Guid id)
         {
             Meal meal = MealRepository.GetById(id);
@@ -72,7 +66,6 @@ namespace PancakeProwler.Web.Controllers
 
         //
         // POST: /Meal/Edit/5
-
         [HttpPost]
         public ActionResult Edit(Meal meal)
         {
