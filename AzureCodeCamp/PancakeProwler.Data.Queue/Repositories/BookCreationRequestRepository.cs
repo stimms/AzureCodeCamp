@@ -15,7 +15,7 @@ namespace PancakeProwler.Data.Queue.Repositories
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
             var queueClient = storageAccount.CreateCloudQueueClient();
             var queue = queueClient.GetQueueReference("bookqueue");
-            queue.CreateIfNotExists();
+            queue.CreateIfNotExists();//inefficient! do this once per application start and not once per message
 
             var message = new CloudQueueMessage(Newtonsoft.Json.JsonConvert.SerializeObject(request));
             queue.AddMessage(message);
