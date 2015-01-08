@@ -30,10 +30,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.InMemor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.DocumentDb", "PancakeProwler.Data.DocumentDb\PancakeProwler.Data.DocumentDb.csproj", "{4FF47D11-34B4-46AB-A281-267DE2FFC8EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.ServiceBus", "PancakeProwler.Data.ServiceBus\PancakeProwler.Data.ServiceBus.csproj", "{3470221D-3E9B-44B3-BE8E-1DB948EACE2A}"
+EndProject
 Global
-	GlobalSection(CodealikeProperties) = postSolution
-		SolutionGuid = d611153b-021a-427b-b0a7-8223801c0aec
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -79,8 +78,15 @@ Global
 		{4FF47D11-34B4-46AB-A281-267DE2FFC8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FF47D11-34B4-46AB-A281-267DE2FFC8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FF47D11-34B4-46AB-A281-267DE2FFC8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3470221D-3E9B-44B3-BE8E-1DB948EACE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3470221D-3E9B-44B3-BE8E-1DB948EACE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3470221D-3E9B-44B3-BE8E-1DB948EACE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3470221D-3E9B-44B3-BE8E-1DB948EACE2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = d611153b-021a-427b-b0a7-8223801c0aec
 	EndGlobalSection
 EndGlobal

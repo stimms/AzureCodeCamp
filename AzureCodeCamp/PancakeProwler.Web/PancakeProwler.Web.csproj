@@ -335,6 +335,10 @@
       <Project>{a4545760-a2e6-4489-80ba-4093cb6aa14f}</Project>
       <Name>PancakeProwler.Data.Queue</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Data.ServiceBus\PancakeProwler.Data.ServiceBus.csproj">
+      <Project>{3470221d-3e9b-44b3-be8e-1db948eace2a}</Project>
+      <Name>PancakeProwler.Data.ServiceBus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PancakeProwler.Data.SQL\PancakeProwler.Data.SQL.csproj">
       <Project>{bd158b9e-9c16-46f3-8709-ce7a69f24da2}</Project>
       <Name>PancakeProwler.Data.SQL</Name>
