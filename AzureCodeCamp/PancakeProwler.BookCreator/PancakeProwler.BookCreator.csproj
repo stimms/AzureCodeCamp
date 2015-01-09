@@ -107,7 +107,7 @@
     <Compile Include="MailSender.cs" />
     <Compile Include="PdfCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkerRole.cs" />
+    <Compile Include="QueueListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
