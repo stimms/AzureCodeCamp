@@ -14,6 +14,7 @@ namespace PancakeProwler.BookCreator
         {
             Trace.WriteLine("Starting book creator", "Information");
 
+            //Uncomment for service bus storage
             var queueClient = QueueClient.CreateFromConnectionString(System.Configuration.ConfigurationManager.AppSettings["ServiceBusEndPoint"], "demo");
             while (true)
             {
