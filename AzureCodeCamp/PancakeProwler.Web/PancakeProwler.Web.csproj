@@ -238,6 +238,8 @@
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\knockout-3.2.0.debug.js" />
+    <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\PageScripts\Home\Index.js" />
     <Content Include="Scripts\PageScripts\Meal\Create.js" />
     <Content Include="Scripts\PageScripts\Recipe\Index.js" />
@@ -346,6 +348,10 @@
     <ProjectReference Include="..\PancakeProwler.Data.Table\PancakeProwler.Data.Table.csproj">
       <Project>{4c58230f-c5af-4d81-a244-3567e40dd4b5}</Project>
       <Name>PancakeProwler.Data.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Search\PancakeProwler.Search.csproj">
+      <Project>{cced90ff-d342-4c19-bab7-d8a2f961ddeb}</Project>
+      <Name>PancakeProwler.Search</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@
     <strong>Personalized Cookbook Requested!</strong>  You will recived an e-mail with a link shortly. 
 </div>
 <p>
-    @Html.ActionLink("Create New", "Create") | <a href="#cookbookModal" role="button" data-toggle="modal">Generate Cookbook</a>
+    @Html.ActionLink("Create New", "Create") | <a href="#cookbookModal" role="button" data-toggle="modal">Generate Cookbook</a> | <input type="text" placeholder="Enter terms" name="searchTerm"/> <button class="btn" data-action="search">Search</button>
 </p>
 <table>
     <tr>
@@ -31,6 +31,13 @@
             </td>
         </tr>
     }
+
+    <div data-bind="visible: results().length > 0">
+        <h3>Search Results</h3>
+        <ul data-bind="foreach: results">
+            <li><a data-bind="text: Name, attr: { href: '/Recipe/Edit/' + Id}"></a></li>
+        </ul>
+    </div>
 
     <div id="cookbookModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
@@ -56,8 +63,17 @@
 @section Scripts
 {
     <script>
+        var model = { results: ko.observableArray([]) };
+        ko.applyBindings(model);
         $(function () {
             var bookGenerator = new PancakeProwler.Recipe.Index.BookGenerator($(".generateCookbook"), $("#email"), $("#name"), $("#successAlert"));
+            $("[data-action=search]").on("click", function () {
+                $.getJSON("/Recipe/Search", { term: $("[name=searchTerm]").val() },
+                    function (json) {
+                        model.results.removeAll();
+                        model.results.push.apply(model.results, json);
+                    });
+            });
         });
     </script>
 
