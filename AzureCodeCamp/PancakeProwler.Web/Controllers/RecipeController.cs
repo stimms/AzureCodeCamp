@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using PancakeProwler.Data.Common.Models;
 using PancakeProwler.Data.Common.Repositories;
+using PancakeProwler.Search;
 
 namespace PancakeProwler.Web.Controllers
 {
@@ -55,7 +56,10 @@ namespace PancakeProwler.Web.Controllers
                 recipe.Id = Guid.NewGuid();
                 if (imageLocation != null)
                     recipe.ImageLocation = ImageRepository.Save(imageLocation.ContentType, imageLocation.InputStream).AbsoluteUri;
+                
                 RecipeRepository.Create(recipe);
+                var search = new SearchProvider();
+                search.AddToIndex(recipe);
 
                 return RedirectToAction("Index");
             }
@@ -97,5 +101,11 @@ namespace PancakeProwler.Web.Controllers
             return new EmptyResult();
         }
 
+        public ActionResult Search(string term)
+        {
+            var search = new SearchProvider();
+            return Json(search.Search(term), JsonRequestBehavior.AllowGet);
+                
+        }
     }
 }
