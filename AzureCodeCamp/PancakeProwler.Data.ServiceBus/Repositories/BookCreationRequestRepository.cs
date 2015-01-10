@@ -10,9 +10,8 @@ namespace PancakeProwler.Data.ServiceBus.Repositories
     {
         public void Add(Common.Models.BookCreationRequest request)
         {
-            var queueClient = QueueClient.CreateFromConnectionString(System.Configuration.ConfigurationManager.AppSettings["ServiceBusEndPoint"], "demo");
-            queueClient.Send(new BrokeredMessage(Newtonsoft.Json.JsonConvert.SerializeObject(request)));
-            
+            //1. get queue
+            //2. send message
         }
     }
 }

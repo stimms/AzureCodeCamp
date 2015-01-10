@@ -14,46 +14,10 @@ namespace PancakeProwler.BookCreator
         {
             Trace.WriteLine("Starting book creator", "Information");
 
-            //Uncomment for service bus storage
-            var queueClient = QueueClient.CreateFromConnectionString(System.Configuration.ConfigurationManager.AppSettings["ServiceBusEndPoint"], "demo");
-            while (true)
-            {
-                var message = queueClient.Receive();
-                if (message != null)
-                {
-                    var decodedMessage = Newtonsoft.Json.JsonConvert.DeserializeObject<PancakeProwler.Data.Common.Models.BookCreationRequest>(message.GetBody<string>());
-                    var mailSender = new MailSender();
-                    mailSender.SendCreationEMail(decodedMessage);
-                    try
-                    {
-                        message.Complete();
-                    }
-                    catch(Exception ex)
-                    {
-                        Trace.TraceError(ex.Message);
-                    }
-                }
-            }
-
-            //Uncomment for storage queue 
-            //var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
-            //var storageQueueClient = storageAccount.CreateCloudQueueClient();
-            //var queue = storageQueueClient.GetQueueReference("bookqueue");
-            //queue.CreateIfNotExists();
-
-            //while (true)
-            //{
-            //    var message = queue.GetMessage();
-            //    if (message != null)
-            //    {
-            //        if (message.DequeueCount < 5)
-            //  {
-            //            var decodedMessage = Newtonsoft.Json.JsonConvert.DeserializeObject<PancakeProwler.Data.Common.Models.BookCreationRequest>(message.AsString);
-            //            SendCreationEMail(decodedMessage);
-            //  }
-            //        queue.DeleteMessage(message);
-            //    }
-            //}
+            //1. create queue client
+            //2. poll for messages
+            //3. act using mailSender.SendCreationEMail
+          
         }
 
 

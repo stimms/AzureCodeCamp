@@ -18,53 +18,31 @@ namespace PancakeProwler.Data.Table.Repositories
 
         public IEnumerable<Recipe> List()
         {
-            var tableClient = GetClient();
-
-            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
-
-            TableQuery<RecipeTableEntity> query = new TableQuery<RecipeTableEntity>();
-            var results = table.ExecuteQuery(query);
-
-            return AutoMapper.Mapper.Map<IEnumerable<RecipeTableEntity>, IEnumerable<Recipe>>(results);
+            //1. get client
+            //2. query table
+            //3. map and return results
+            throw new NotImplementedException();
         }
 
         public Recipe GetById(Guid id)
         {
-            var tableClient = GetClient();
-
-            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
-
-            TableOperation retrieveOperation = TableOperation.Retrieve<RecipeTableEntity>("recipe", id.ToString());
-
-            
-            var result = table.Execute(retrieveOperation);
-
-            return AutoMapper.Mapper.Map<RecipeTableEntity, Recipe>((RecipeTableEntity)result.Result);
+            //1. get client
+            //2. query table
+            //3. map and return results
+            throw new NotImplementedException();
         }
 
         public void Create(Recipe recipe)
         {
-            var tableClient = GetClient();
-
-            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
-
-            var toInsert = AutoMapper.Mapper.Map<Recipe, RecipeTableEntity>(recipe);
-            TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(toInsert);
-
-            table.Execute(insertOrReplaceOperation);
+            //1. get client
+            //2. insert
 
         }
 
         public void Edit(Recipe recipe)
         {
-            var tableClient = GetClient();
-
-            CloudTable table = tableClient.GetTableReference(TABLE_NAME);
-
-            var toInsert = AutoMapper.Mapper.Map<Recipe, RecipeTableEntity>(recipe);
-            TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(toInsert);
-
-            table.Execute(insertOrReplaceOperation);
+            //1. get client
+            //2. insert
         }
 
         public void Dispose()

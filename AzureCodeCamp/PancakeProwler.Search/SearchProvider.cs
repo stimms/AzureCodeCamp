@@ -12,28 +12,25 @@ namespace PancakeProwler.Search
     {
         public bool AddToIndex(PancakeProwler.Data.Common.Models.Recipe recipe)
         {
-            var client = GetClient();
-            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), "indexes/recipes/docs/index?api-version=2014-10-20-Preview");
-
-            HttpRequestMessage request = BuildAddRequest(recipe, uri);
-
-            return client.SendAsync(request).Result.StatusCode == System.Net.HttpStatusCode.OK;
+            //1. get client
+            //2. craft url
+            //3. send request
+            throw new NotImplementedException();
         }
 
         public IEnumerable<SearchResult> Search(string term)
         {
-            var client = GetClient();
-            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), "indexes/recipes/docs?api-version=2014-10-20-Preview&search=" + term);
-
-            var request = new HttpRequestMessage(HttpMethod.Get, uri);
-            var result = client.SendAsync(request).Result;
-            var content = result.Content.ReadAsStringAsync().Result;
-
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<SearchResultEnvelope>(content).value;
+            //1. get client
+            //2. craft url
+            //3. send request
+            throw new NotImplementedException();
         }
 
         private static HttpClient GetClient()
         {
+            //1. create http client
+            //2. add api-key header
+            
             var client = new HttpClient();
 
             client.DefaultRequestHeaders.Add("api-key", System.Configuration.ConfigurationManager.AppSettings["SearchAPIKey"]);
@@ -41,16 +38,14 @@ namespace PancakeProwler.Search
         }
         private HttpRequestMessage BuildAddRequest(PancakeProwler.Data.Common.Models.Recipe recipe, Uri uri)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, uri);
+            //1. create a new post request
+            //2. create a new envelope
+            //3. add items to envelope
+            //4. set request content
+            //5. return request
 
-            var model = new SendToSearchEnvelope();
-            model.value.Add(new SendToSearchItem { Action = "upload", id = recipe.Id.ToString(), ingredients = recipe.Ingredients, name = recipe.Name, steps = recipe.Steps });
-
-            request.Content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            return request;
+            throw new NotImplementedException();
         }
-
-        
     }
 
     public class SearchResultEnvelope
