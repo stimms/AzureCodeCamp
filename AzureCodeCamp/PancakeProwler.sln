@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Search", "PancakeProwler.Search\PancakeProwler.Search.csproj", "{CCED90FF-D342-4C19-BAB7-D8A2F961DDEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeProwler.Data.Postgres", "PancakeProwler.Data.Postgres\PancakeProwler.Data.Postgres.csproj", "{8309F60B-5CF1-44F9-86E0-31B3D6634CE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{CCED90FF-D342-4C19-BAB7-D8A2F961DDEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCED90FF-D342-4C19-BAB7-D8A2F961DDEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCED90FF-D342-4C19-BAB7-D8A2F961DDEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8309F60B-5CF1-44F9-86E0-31B3D6634CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8309F60B-5CF1-44F9-86E0-31B3D6634CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8309F60B-5CF1-44F9-86E0-31B3D6634CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8309F60B-5CF1-44F9-86E0-31B3D6634CE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

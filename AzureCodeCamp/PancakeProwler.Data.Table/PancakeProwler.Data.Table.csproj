@@ -94,6 +94,10 @@
       <Project>{69b6aad3-9f25-4af4-bc11-f35042a6c648}</Project>
       <Name>PancakeProwler.Data.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PancakeProwler.Data.Postgres\PancakeProwler.Data.Postgres.csproj">
+      <Project>{8309f60b-5cf1-44f9-86e0-31b3d6634ce1}</Project>
+      <Name>PancakeProwler.Data.Postgres</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
