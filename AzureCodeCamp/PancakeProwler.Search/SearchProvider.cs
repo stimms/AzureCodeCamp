@@ -13,7 +13,8 @@ namespace PancakeProwler.Search
         public bool AddToIndex(PancakeProwler.Data.Common.Models.Recipe recipe)
         {
             var client = GetClient();
-            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), "indexes/recipes/docs/index?api-version=2014-10-20-Preview");
+            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), 
+                "indexes/recipes/docs/index?api-version=" + System.Configuration.ConfigurationManager.AppSettings["SearchApiVersion"]);
 
             HttpRequestMessage request = BuildAddRequest(recipe, uri);
 
@@ -23,7 +24,8 @@ namespace PancakeProwler.Search
         public IEnumerable<SearchResult> Search(string term)
         {
             var client = GetClient();
-            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), "indexes/recipes/docs?api-version=2014-10-20-Preview&search=" + term);
+            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), 
+                "indexes/recipes/docs?api-version=" + System.Configuration.ConfigurationManager.AppSettings["SearchApiVersion"] + "&search=" + term);
 
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
             var result = client.SendAsync(request).Result;
