@@ -1,10 +1,6 @@
 ﻿using NLog;
-using System;
 using Autofac;
-using System.Linq;
-using Autofac.Integration.Mvc;
 using PancakeProwler.Data.SQL;
-using System.Collections.Generic;
 
 namespace PancakeProwler.Web
 {
@@ -16,23 +12,26 @@ namespace PancakeProwler.Web
             builder.RegisterInstance(log);
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).AsImplementedInterfaces();
 
-            //Uncomment for InMemory Storage
-            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.InMemory.Repositories.RecipeRepository).Assembly)
+//            Uncomment for InMemory Storage
+            builder.RegisterAssemblyTypes(typeof(Data.InMemory.Repositories.RecipeRepository).Assembly)
                    .AsImplementedInterfaces()
                    .SingleInstance();
 
             //Uncomment for SQL storage
-            //builder.RegisterType<DataContext>().AsSelf().InstancePerHttpRequest();
-            //builder.RegisterAssemblyTypes(typeof(Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerHttpRequest();           
+//            builder.RegisterType<DataContext>().AsSelf().InstancePerRequest();
+//            builder.RegisterAssemblyTypes(typeof(Data.SQL.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerRequest();           
 
             //Uncomment for Azure table storage
-            //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+//            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Table.Repositories.RecipeRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
 
             //Uncomment for Azure DocumentDb storage
-            //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.DocumentDb.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerHttpRequest().PropertiesAutowired();
+//            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.DocumentDb.RecipeRepository).Assembly).AsImplementedInterfaces().InstancePerRequest().PropertiesAutowired();
 
             //Uncomment for storage queue
             //builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Queue.Repositories.BookCreationRequestRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+
+            //Uncomment for PostgreSQL storage
+//            builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.Postgres.IPostgresRepository).Assembly).AsImplementedInterfaces().InstancePerRequest().PropertiesAutowired();
 
             builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.ServiceBus.Repositories.BookCreationRequestRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
 
