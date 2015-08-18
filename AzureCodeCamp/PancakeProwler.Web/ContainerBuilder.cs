@@ -1,6 +1,7 @@
 ﻿using NLog;
 using Autofac;
 using PancakeProwler.Data.SQL;
+using PancakeProwler.Search;
 
 namespace PancakeProwler.Web
 {
@@ -36,6 +37,12 @@ namespace PancakeProwler.Web
             builder.RegisterAssemblyTypes(typeof(PancakeProwler.Data.ServiceBus.Repositories.BookCreationRequestRepository).Assembly).AsImplementedInterfaces().PropertiesAutowired();
 
             builder.RegisterType<PancakeProwler.Data.Common.Repositories.BlobImageRepository>().AsImplementedInterfaces();
+
+            // Uncomment for Elastic Search
+            builder.RegisterType<ElasticSearchProvider>().AsImplementedInterfaces();
+
+            // Uncomment for Azure Search
+//            builder.RegisterType<AzureSearchProvider>().AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).Where(x => x.Name.EndsWith("Controller")).AsSelf().PropertiesAutowired();
             return builder.Build();

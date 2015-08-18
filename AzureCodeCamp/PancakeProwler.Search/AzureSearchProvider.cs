@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace PancakeProwler.Search
 {
-    public class SearchProvider
+    public class AzureSearchProvider : ISearchProvider
     {
         public bool AddToIndex(PancakeProwler.Data.Common.Models.Recipe recipe)
         {
             var client = GetClient();
-            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), "indexes/recipes/docs/index?api-version=2014-10-20-Preview");
+            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["AzureSearchBaseURI"]), 
+                "indexes/recipes/docs/index?api-version=" + System.Configuration.ConfigurationManager.AppSettings["AzureSearchApiVersion"]);
 
             HttpRequestMessage request = BuildAddRequest(recipe, uri);
 
@@ -23,7 +24,8 @@ namespace PancakeProwler.Search
         public IEnumerable<SearchResult> Search(string term)
         {
             var client = GetClient();
-            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["SearchBaseURI"]), "indexes/recipes/docs?api-version=2014-10-20-Preview&search=" + term);
+            var uri = new Uri(new Uri(System.Configuration.ConfigurationManager.AppSettings["AzureSearchBaseURI"]), 
+                "indexes/recipes/docs?api-version=" + System.Configuration.ConfigurationManager.AppSettings["AzureSearchApiVersion"] + "&search=" + term);
 
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
             var result = client.SendAsync(request).Result;
@@ -36,7 +38,7 @@ namespace PancakeProwler.Search
         {
             var client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("api-key", System.Configuration.ConfigurationManager.AppSettings["SearchAPIKey"]);
+            client.DefaultRequestHeaders.Add("api-key", System.Configuration.ConfigurationManager.AppSettings["AzureSearchAPIKey"]);
             return client;
         }
         private HttpRequestMessage BuildAddRequest(PancakeProwler.Data.Common.Models.Recipe recipe, Uri uri)
